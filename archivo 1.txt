@@ -1,0 +1,21 @@
+-ola
+--tipo 1
+---azul
+---roja
+---blanca
+--tipo 2
+---grande
+-ola
+--tipo 1
+---azul
+---roja
+---blanca
+--tipo 2
+---grande
+-ola
+--tipo 1
+---azul
+---roja
+---blanca
+--tipo 2
+---grande
