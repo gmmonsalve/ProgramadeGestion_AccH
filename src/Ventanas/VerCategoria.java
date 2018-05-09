@@ -5,12 +5,19 @@
  */
 package Ventanas;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+import listas.*;
+
 /**
  *
  * @author LUIS POTTE
  */
 public class VerCategoria extends javax.swing.JDialog {
-    Object NombreDeCategoria;
+
+    String NombreDeCategoria;
+    Multilista aux;
+
     /**
      * Creates new form VerCategorias
      */
@@ -20,11 +27,21 @@ public class VerCategoria extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    public VerCategoria(java.awt.Frame aThis, boolean b, String prod) {
+    public VerCategoria(java.awt.Frame aThis, boolean b, String prod, Multilista stock) {
         super(aThis, b);
-        initComponents();
         this.NombreDeCategoria = prod;
+        this.aux = stock;
         this.setLocationRelativeTo(null);
+        this.modelo();
+        initComponents();
+    }
+
+    public JLabel getNom_cate() {
+        return nom_cate;
+    }
+
+    public void setNom_cate(JLabel nom_cate) {
+        this.nom_cate = nom_cate;
     }
 
     /**
@@ -39,7 +56,7 @@ public class VerCategoria extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         nom_cate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaInfo = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,18 +66,15 @@ public class VerCategoria extends javax.swing.JDialog {
         nom_cate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         nom_cate.setForeground(new java.awt.Color(204, 0, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaInfo);
 
         jButton2.setText("Aceptar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -75,14 +89,15 @@ public class VerCategoria extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(107, 107, 107)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(36, 36, 36)
-                            .addComponent(nom_cate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(36, 36, 36)
+                        .addComponent(nom_cate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jButton2)))
                 .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,17 +109,81 @@ public class VerCategoria extends javax.swing.JDialog {
                     .addComponent(nom_cate, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cancelar
-        this.dispose();
+
     }//GEN-LAST:event_jButton2cancelar
+
+    public void setNombreDeCategoria(Object NombreDeCategoria) {
+        this.NombreDeCategoria = (String) NombreDeCategoria;
+    }
+
+    private void mostar_datos(DefaultTableModel tabla, int n, int m) {
+        DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
+        System.out.println("Entró a mostraar datos"+ NombreDeCategoria);
+        NodoPrincipal cats = aux.getNodo(NombreDeCategoria);
+        System.out.println(": " + cats.getInfo());
+        //imprimo todos los productos de las subcategorias que se hicieron en la categoria
+        NodoSegundario subnodo = cats.getNodos().getInicio();
+        while (subnodo != null) {
+            NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+            System.out.println("  " + u.getInfo()); // nombre de la sublista
+            u = u.getSiguiente();
+            int row = 0, column = 0;
+            while (u != null) {
+                System.out.println("entró a porductos info");
+                // informacion del producto
+                Producto infoProducto = (Producto) u.getInfo();
+                tabla.setValueAt(infoProducto.getCategoria(), row, column);
+                column++;
+                tabla.setValueAt(infoProducto.getCantidad(), row, column);
+                column++;
+                tabla.setValueAt(infoProducto.getNombre(), row, column);
+                column++;
+                tabla.setValueAt(infoProducto.getReferencia(), row, column);
+                column++;
+                tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
+                column++;
+                u = u.getSiguiente();
+                row++;
+                column = 0;
+            }
+            subnodo = subnodo.getSiguiente();
+        }
+        TablaInfo.setModel(tabla);
+    }
+    
+    private void modelo(){
+        DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
+        System.out.println("Entró a mostraar datos"+ NombreDeCategoria);
+        NodoPrincipal cats = aux.getNodo(NombreDeCategoria);
+        System.out.println(": " + cats.getInfo());
+        //imprimo todos los productos de las subcategorias que se hicieron en la categoria
+        NodoSegundario subnodo = cats.getNodos().getInicio();
+        int contR=0, contC=5; 
+        while (subnodo != null) {
+            NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+            System.out.println("  " + u.getInfo()); // nombre de la sublista
+            u = u.getSiguiente();
+            int filas = 0, colum = 0;
+            while (u != null) {
+                contR++;
+                u = u.getSiguiente();
+            }
+            subnodo = subnodo.getSiguiente();
+        }
+        
+        ModeloTabla.setRowCount(contR);
+        ModeloTabla.setColumnCount(contC);
+        mostar_datos(ModeloTabla, contR, contC);
+    }
 
     /**
      * @param args the command line arguments
@@ -120,17 +199,27 @@ public class VerCategoria extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerCategoria.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerCategoria.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerCategoria.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerCategoria.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -150,10 +239,11 @@ public class VerCategoria extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaInfo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel nom_cate;
     // End of variables declaration//GEN-END:variables
+
 }
