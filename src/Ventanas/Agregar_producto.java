@@ -5,19 +5,27 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import javax.swing.JTextField;
+
 /**
  *
  * @author LUIS POTTE
  */
 public class Agregar_producto extends javax.swing.JDialog {
-
+String k,l;
     /**
      * Creates new form Agregar_producto
      */
     public Agregar_producto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        k= nom_prod1.getText();
+        l= ref1.getText();
     }
 
     /**
@@ -30,18 +38,14 @@ public class Agregar_producto extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jButton2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
         ref1 = new javax.swing.JTextField();
         nom_prod1 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -49,65 +53,76 @@ public class Agregar_producto extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(244, 249, 247));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Digite referencia del producto:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
-
         jSpinner1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 50, -1));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 60, 20));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("cancelar");
+        jButton2.setText("Cancelar");
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2cancelar(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 70, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 70, 30));
 
-        jLabel15.setText("Digite la cantidadd del producto:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        jLabel15.setText("Cantidad del producto:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 110, 20));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 106, 170, -1));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la categoría", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 170, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 144, 170, -1));
-        jPanel1.add(ref1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 170, -1));
-        jPanel1.add(nom_prod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 182, 170, -1));
+        ref1.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        ref1.setForeground(new java.awt.Color(153, 153, 153));
+        ref1.setText("Digite la referencia del producto");
+        ref1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ref1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(ref1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 170, -1));
+
+        nom_prod1.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        nom_prod1.setForeground(new java.awt.Color(153, 153, 153));
+        nom_prod1.setText("Digite el nombre del producto");
+        nom_prod1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nom_prod1MouseClicked(evt);
+            }
+        });
+        nom_prod1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_prod1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nom_prod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 170, -1));
 
         jButton9.setBackground(new java.awt.Color(204, 204, 255));
         jButton9.setText("Aceptar");
         jButton9.setBorder(null);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 60, 30));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 70, 30));
 
-        jLabel11.setText("Seleccione la categoria:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
-
-        jLabel12.setText("Seleccione la subcategoria: ");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
-
-        jLabel13.setText("Digite el nombre del producto:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la subcategoría", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 170, -1));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Agregar Nuevo Producto");
+        jLabel1.setText("AGREGAR NUEVO PRODUCTO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(194, 194, 194)
                 .addComponent(jLabel1)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,9 +132,9 @@ public class Agregar_producto extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 550, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 550, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 550, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,6 +143,51 @@ public class Agregar_producto extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton2cancelar
 
+    private void nom_prod1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_prod1MouseClicked
+   if(nom_prod1.getText().equals(k)){
+       nom_prod1.setText("");
+    cambiarFuente(nom_prod1);
+    fuente(ref1);
+    }
+   
+    }//GEN-LAST:event_nom_prod1MouseClicked
+
+    private void ref1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ref1MouseClicked
+      if(ref1.getText().equals(l)){
+          ref1.setText("");
+        cambiarFuente(ref1);
+        fuente(nom_prod1);
+      }
+   
+    }//GEN-LAST:event_ref1MouseClicked
+
+    private void nom_prod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_prod1ActionPerformed
+       
+    }//GEN-LAST:event_nom_prod1ActionPerformed
+
+    public void cambiarFuente(Component n){
+    n.setForeground(Color.BLACK);
+    Font f = new Font("Tahoma",Font.BOLD,10);
+    n.setFont(f);
+    }
+    public void sett(){
+    
+    }
+    public void fuente(JTextField n){
+    if(n.getText().equals("") || n.getText().equals("")){
+    n.setForeground(new java.awt.Color(153,153,153));
+    Font f = new Font("Tahoma",Font.ITALIC,10);
+    n.setFont(f); 
+    if(n.equals(ref1)){
+        n.setText("Digite la referencia del producto");
+    }else{
+        if(n.equals(nom_prod1)){
+        n.setText("Digite el nombre del producto");
+        }
+    }
+    }
+    
+    }
     /**
      * @param args the command line arguments
      */
@@ -176,10 +236,6 @@ public class Agregar_producto extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
