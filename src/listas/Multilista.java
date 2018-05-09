@@ -38,6 +38,11 @@ public class Multilista extends Lista{
         return s;
     }
     
+    public NodoSegundario getSubnodo(Object a, Object b, Object c){
+        NodoPrincipal aux = getNodo(a);
+        return aux.getSubnodo(b, c);
+    }
+    
     public void add_sublista(Object p, Object info){
         NodoPrincipal aux = getNodo(p);
         NodoSegundario nvo = new NodoSegundario(info);

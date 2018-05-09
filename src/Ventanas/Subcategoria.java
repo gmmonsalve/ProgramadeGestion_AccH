@@ -14,7 +14,9 @@ import java.awt.Font;
  * @author LUIS POTTE
  */
 public class Subcategoria extends javax.swing.JDialog {
-String k;
+    private String nombre;
+    private Object categoria; 
+    String k;
     /**
      * Creates new form Subcategoria
      */
@@ -22,9 +24,39 @@ String k;
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        k = sub.getText();
+        k = nom.getText();
+    }
+    
+    public void add_combocat(javax.swing.JComboBox<String> jcbx){
+        for(int i=0; i < jcbx.getItemCount();i++){
+            boolean sw = true;
+            for (int j = 0; j <comboCategorias.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(comboCategorias.getItemAt(j))){
+                    sw=false;
+                }
+            }
+            if(sw==true){
+                this.comboCategorias.addItem(jcbx.getItemAt(i));
+            }
+        }
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Object getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Object categoria) {
+        this.categoria = categoria;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,93 +67,113 @@ String k;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBoxCategorias = new javax.swing.JComboBox<>();
-        sub = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        nom = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        comboCategorias = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(244, 249, 247));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBoxCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la categoría", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBoxCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 223, -1));
-
-        sub.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        sub.setForeground(new java.awt.Color(153, 153, 153));
-        sub.setText("Digite el nombre de la subcategoría");
-        sub.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                subMouseClicked(evt);
-            }
-        });
-        sub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subActionPerformed(evt);
-            }
-        });
-        jPanel1.add(sub, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 223, -1));
-
-        jButton1.setText("Aceptar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
-
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2cancelar(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 34, 480, 230));
-
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("AGREGAR NUEVA SUBCATEGORÍA");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("AGREGAR NUEVA SUBCATEGORÍA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel2)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(148, 148, 148)
+                .addComponent(jLabel4)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 30));
+
+        nom.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        nom.setForeground(new java.awt.Color(153, 153, 153));
+        nom.setText("Digite el nombre de la subcategoría");
+        nom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nomMouseClicked(evt);
+            }
+        });
+        nom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 220, -1));
+
+        jButton1.setText("aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+
+        comboCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoría" }));
+        jPanel1.add(comboCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 220, -1));
+
+        jButton2.setText("cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2cancelar(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void subActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subActionPerformed
 
     private void jButton2cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cancelar
         this.dispose();
     }//GEN-LAST:event_jButton2cancelar
 
-    private void subMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subMouseClicked
-        if(sub.getText().equals(k)){
-          sub.setText("");
-        cambiarFuente(sub);
-      }
-    }//GEN-LAST:event_subMouseClicked
-public void cambiarFuente(Component n){
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setNombre(nom.getText());
+        this.setCategoria(comboCategorias.getItemListeners());
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomMouseClicked
+        if(nom.getText().equals(k)){
+            nom.setText("");
+            cambiarFuente(nom);
+        }
+    }//GEN-LAST:event_nomMouseClicked
+
+    private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomActionPerformed
+
+    public void cambiarFuente(Component n){
     n.setForeground(Color.BLACK);
     Font f = new Font("Tahoma",Font.BOLD,10);
     n.setFont(f);
@@ -137,7 +189,7 @@ public void cambiarFuente(Component n){
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -169,12 +221,12 @@ public void cambiarFuente(Component n){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboCategorias;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBoxCategorias;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField sub;
+    private javax.swing.JTextField nom;
     // End of variables declaration//GEN-END:variables
 }

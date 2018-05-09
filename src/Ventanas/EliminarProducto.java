@@ -8,24 +8,18 @@ package Ventanas;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author LUIS POTTE
  */
 public class EliminarProducto extends javax.swing.JDialog {
-String l;
+
     /**
      * Creates new form ELiminarProducto
      */
-    public EliminarProducto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.setUndecorated(true);
-        initComponents();
-        this.setLocationRelativeTo(null);
-         l = nom_prod1.getText();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,23 +29,24 @@ String l;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         nom_prod1 = new javax.swing.JTextField();
+        combocat = new javax.swing.JComboBox<>();
+        combosubcat = new javax.swing.JComboBox<>();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(244, 249, 247));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ELIMINAR PRODUCTOS");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ELIMINAR PRODUCTOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,24 +54,16 @@ String l;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(177, 177, 177)
-                .addComponent(jLabel1)
+                .addComponent(jLabel2)
                 .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
-
-        jPanel2.setBackground(new java.awt.Color(244, 249, 247));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la categoría", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la subcategoría", "Item 2", "Item 3", "Item 4" }));
 
         nom_prod1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         nom_prod1.setForeground(new java.awt.Color(153, 153, 153));
@@ -86,8 +73,27 @@ String l;
                 nom_prod1MouseClicked(evt);
             }
         });
+        nom_prod1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_prod1ActionPerformed(evt);
+            }
+        });
+
+        combocat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione categoría" }));
+
+        combosubcat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Subcategoría" }));
+        combosubcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combosubcatActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Aceptar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptar(evt);
+            }
+        });
 
         jButton10.setText("Cancelar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -100,55 +106,162 @@ String l;
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combosubcat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combocat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nom_prod1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nom_prod1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(149, 149, 149))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton9)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10)
+                .addGap(22, 22, 22))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(combocat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(combosubcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(nom_prod1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 480, 280));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private String nombre;
+    private String Categoria;
+    private String subcategoria;
+    String l;
+
+    public EliminarProducto(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        l = nom_prod1.getText();
+    }
+    
+    public void cambiarFuente(Component n) {
+        n.setForeground(Color.BLACK);
+        Font f = new Font("Tahoma", Font.BOLD, 10);
+        n.setFont(f);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+
+    public String getSubcategoria() {
+        return subcategoria;
+    }
+
+    public void setSubcategoria(String subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
+    public void add_combocat(javax.swing.JComboBox<String> jcbx) {
+        for (int i = 0; i < jcbx.getItemCount(); i++) {
+            boolean sw = true;
+            for (int j = 0; j < combocat.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(combocat.getItemAt(j))) {
+                    sw = false;
+                }
+            }
+            if (sw == true) {
+                this.combocat.addItem(jcbx.getItemAt(i));
+            }
+        }
+    }
+
+    public void add_combosubcat(javax.swing.JComboBox<String> jcbx) {
+        for (int i = 0; i < jcbx.getItemCount(); i++) {
+            boolean sw = true;
+            for (int j = 0; j < combosubcat.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(combosubcat.getItemAt(j))) {
+                    sw = false;
+                }
+            }
+            if (sw == true) {
+                this.combosubcat.addItem(jcbx.getItemAt(i));
+            }
+        }
+    }
+    
+    public boolean verificar_valores(){
+        boolean b =true;
+        if (this.getClass()==null && this.getSubcategoria()==null && this.getNombre()== null){
+            b = false;
+        }
+        return b;
+    }
+    
+
     private void cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar
-        this.dispose();
+        int op = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cancelar el proceso?", "Alerta!", JOptionPane.YES_NO_OPTION);
+        if (op == 0){
+            this.dispose();
+        }
     }//GEN-LAST:event_cancelar
 
+    private void aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar
+        this.setCategoria(combocat.getSelectedItem().toString());
+        this.setSubcategoria(combosubcat.getSelectedItem().toString());
+        this.setNombre(nom_prod1.getText());
+        this.dispose();
+    }//GEN-LAST:event_aceptar
+
     private void nom_prod1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_prod1MouseClicked
-       if(nom_prod1.getText().equals(l)){
-        nom_prod1.setText("");
-        cambiarFuente(nom_prod1);
-       }
-       
+        if(nom_prod1.getText().equals(l)){
+            nom_prod1.setText("");
+            cambiarFuente(nom_prod1);
+        }
     }//GEN-LAST:event_nom_prod1MouseClicked
-public void cambiarFuente(Component n){
-    n.setForeground(Color.BLACK);
-    Font f = new Font("Tahoma",Font.BOLD,10);
-    n.setFont(f);
-    }
+
+    private void nom_prod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_prod1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nom_prod1ActionPerformed
+
+    private void combosubcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combosubcatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combosubcatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,7 +273,7 @@ public void cambiarFuente(Component n){
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -193,11 +306,11 @@ public void cambiarFuente(Component n){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combocat;
+    private javax.swing.JComboBox<String> combosubcat;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nom_prod1;

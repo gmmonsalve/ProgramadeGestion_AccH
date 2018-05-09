@@ -5,12 +5,15 @@
  */
 package Ventanas;
 
+import javax.swing.table.DefaultTableModel;
+import listas.Multilista;
+
 /**
  *
  * @author LUIS POTTE
  */
 public class VerStock extends javax.swing.JDialog {
-
+    Multilista aux;
     /**
      * Creates new form VerStock
      */
@@ -40,13 +43,13 @@ public class VerStock extends javax.swing.JDialog {
 
         Tabla_Stock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre del Producto", "Categoria", "SubCategoria", "Referencia", "Cantidad "
             }
         ));
         jScrollPane1.setViewportView(Tabla_Stock);
@@ -92,7 +95,32 @@ public class VerStock extends javax.swing.JDialog {
     private void jButton3cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3cancelar
         this.dispose();
     }//GEN-LAST:event_jButton3cancelar
-
+    
+    public void modelar(){
+        DefaultTableModel ModeloTabla = (DefaultTableModel) Tabla_Stock.getModel();
+        int contR = 0, contC = 1;
+        int clm = 1;
+        // cada producto se va a ir agregando a una columna
+        while(clm <= 5){
+            
+        }
+        String line;
+        Boolean sw = false;
+//        while (br.ready()) {
+//            line = br.readLine();
+//            for (int i = 0; i < line.length(); i++) {
+//                if (line.substring(i, i + 1).equals(";")) {
+//                    if (!sw) {
+//                        contC++;
+//                    }
+//                }
+//            }
+//            sw = true;
+//            contR++;
+//        }
+//        ModeloTabla.setRowCount(contR);
+//        ModeloTabla.setColumnCount(contC);
+    }
     /**
      * @param args the command line arguments
      */
@@ -121,9 +149,11 @@ public class VerStock extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerStock dialog = new VerStock(new javax.swing.JFrame(), true);
+               VerStock dialog = new VerStock(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

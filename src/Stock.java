@@ -11,8 +11,13 @@
 import Ventanas.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import listas.*;
+
 public class Stock extends javax.swing.JPanel {
+
     Menú_principal Menú;
+    Multilista Stocklist = new Multilista();
+
     /**
      * Creates new form Stock
      */
@@ -30,6 +35,8 @@ public class Stock extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Combo_Categorias = new javax.swing.JComboBox<>();
+        Combo_Subcategorias = new javax.swing.JComboBox<>();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -105,29 +112,64 @@ public class Stock extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7add_nuevacategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7add_nuevacategoria
-        categoria add =new categoria (Menú, true);
+        categoria add = new categoria(Menú, true);
         add.setVisible(true);
+        Stocklist.add_nodoprincipal(add.getNombre());
+        Stocklist.print();
     }//GEN-LAST:event_jButton7add_nuevacategoria
 
     private void jButton8VerCategorias(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8VerCategorias
         String prod = JOptionPane.showInputDialog("Digite el nombre de la categria que desea ver");
-        VerCategoria vcat = new VerCategoria (Menú, true, prod);
+        VerCategoria vcat = new VerCategoria(Menú, true, prod);
         vcat.setVisible(true);
     }//GEN-LAST:event_jButton8VerCategorias
 
     private void jButton2eliminar_productos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2eliminar_productos
-        EliminarProducto add =new EliminarProducto (Menú, true);
+        EliminarProducto add = new EliminarProducto(Menú, true);
+        this.cargar_jcombobox();
+        try {
+        add.add_combocat(Combo_Categorias);
+        add.add_combosubcat(Combo_Subcategorias);
         add.setVisible(true);
+        NodoSegundario producto_a_eliminar = Stocklist.getSubnodo(add.getCategoria(), add.getSubcategoria(), add.getNombre());
+        if (add.verificar_valores() == true) {
+            
+                Stocklist.eliminar_subnodo(add.getCategoria(), add.getSubcategoria(), producto_a_eliminar);
+                Stocklist.print();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha digitado un valor de forma incorrecta intente de nuevo");
+            this.jButton2eliminar_productos(evt);
+        }
+        } catch (NullPointerException e) {
+            }
     }//GEN-LAST:event_jButton2eliminar_productos
 
     private void jButton3add_producto(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3add_producto
-        Agregar_producto add =new Agregar_producto (Menú, true);
+        Producto add = new Producto(Menú, true);
+        this.cargar_jcombobox();
+        add.add_combocat(Combo_Categorias);
+        add.add_combosubcat(Combo_Subcategorias);
         add.setVisible(true);
+        if (add.verificar_valores() == true) {
+            try {
+                Stocklist.add_elmento_sublist(add.getCategoria(), add.getSubcategoria(), add);
+                Stocklist.print();
+            } catch (NullPointerException e) {
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha digitado un valor de forma incorrecta intente de nuevo");
+            this.jButton3add_producto(evt);
+        }
     }//GEN-LAST:event_jButton3add_producto
 
     private void jButton4add_subCategoria(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4add_subCategoria
-        Subcategoria add =new Subcategoria (Menú, true);
+        Subcategoria add = new Subcategoria(Menú, true);
+        this.cargar_jcombobox();
+        add.add_combocat(Combo_Categorias);
         add.setVisible(true);
+        Stocklist.add_sublista(add.getCategoria(), add.getNombre());
+        Stocklist.print();
     }//GEN-LAST:event_jButton4add_subCategoria
 
     private void jLabel5Salir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5Salir
@@ -135,12 +177,27 @@ public class Stock extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel5Salir
 
     private void jButton6verTodoElStock(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6verTodoElStock
-        VerStock add =new VerStock (Menú, true);
-        add.setVisible(true);
+        //VerStock add = new VerStock(Menú, true, Stocklist);
+        //add.setVisible(true);
     }//GEN-LAST:event_jButton6verTodoElStock
 
+    public void cargar_jcombobox() {
+        NodoPrincipal p = Stocklist.getInicioMulti();
+        while (p != null) {
+            Combo_Categorias.addItem(p.getInfo());
+            NodoSegundario q = p.getNodos().getInicio();
+            while (q != null) {
+                NodoSegundario u = (NodoSegundario) q.getInfo();
+                Combo_Subcategorias.addItem(u.getInfo().toString());
+                q = q.getSiguiente();
+            }
+            p = p.getSiguiente();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Combo_Categorias;
+    private javax.swing.JComboBox<String> Combo_Subcategorias;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

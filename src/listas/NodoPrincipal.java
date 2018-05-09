@@ -47,8 +47,10 @@ public class NodoPrincipal {
         NodoSegundario subnodo = nodos.getInicio();
         while (subnodo != null) {
             NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+            System.out.println("  "+u.getInfo());
+            u = u.getSiguiente();
             while(u!=null){
-                System.out.println("   "+u.getInfo());
+                System.out.println("    "+u.getInfo());
                 u = u.getSiguiente();
             }
             subnodo = subnodo.getSiguiente();
@@ -135,6 +137,28 @@ public class NodoPrincipal {
 
     public ListaSimple getNodos() {
         return nodos;
+    }
+
+    public NodoSegundario getSubnodo(Object b, Object c) {
+        NodoSegundario aux2;
+        NodoSegundario aux = nodos.getInicio();
+        NodoSegundario info = (NodoSegundario) aux.getInfo();
+        while (aux != null && !info.getInfo().equals(b)) {
+            aux = aux.getSiguiente();
+            if(aux != null){
+               info = (NodoSegundario) aux.getInfo(); 
+            }
+        }
+        if (aux!= null){
+            aux2 = (NodoSegundario) aux.getInfo();
+        while(aux2.getSiguiente() != null && !aux2.getInfo().equals(c)){
+            aux2 = aux2.getSiguiente();
+        }
+        return aux2;
+        }else{
+            System.out.println("No existe l asublista");
+            return null;
+        }
     }
     
     
