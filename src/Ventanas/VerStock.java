@@ -7,20 +7,93 @@ package Ventanas;
 
 import javax.swing.table.DefaultTableModel;
 import listas.Multilista;
+import listas.NodoPrincipal;
+import listas.NodoSegundario;
 
 /**
  *
  * @author LUIS POTTE
  */
 public class VerStock extends javax.swing.JDialog {
+
     Multilista aux;
+
     /**
      * Creates new form VerStock
      */
+    
     public VerStock(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public VerStock(java.awt.Frame parent, boolean modal, Multilista Stock) {
+        super(parent, modal);
+        initComponents();
         this.setLocationRelativeTo(null);
+        this.aux = Stock;
+        this.modelo();
+    }
+
+    private void mostar_datos(DefaultTableModel tabla, int n, int m) {
+        DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
+        NodoPrincipal cats = aux.getInicioMulti();
+        while (cats != null) {
+            System.out.println(": " + cats.getInfo());
+            NodoSegundario subnodo = cats.getNodos().getInicio();
+            while (subnodo != null) {
+                NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+                System.out.println("  " + u.getInfo()); // nombre de la sublista
+                u = u.getSiguiente();
+                int row = 0, column = 0;
+                while (u != null) {
+                    System.out.println("entró a porductos info");
+                    // informacion del producto
+                    Producto infoProducto = (Producto) u.getInfo();
+                    tabla.setValueAt(infoProducto.getCategoria(), row, column);
+                    column++;
+                    tabla.setValueAt(infoProducto.getCantidad(), row, column);
+                    column++;
+                    tabla.setValueAt(infoProducto.getNombre(), row, column);
+                    column++;
+                    tabla.setValueAt(infoProducto.getReferencia(), row, column);
+                    column++;
+                    tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
+                    column++;
+                    u = u.getSiguiente();
+                    row++;
+                    column = 0;
+                }
+                subnodo = subnodo.getSiguiente();
+            }
+            cats = cats.getSiguiente();
+        }
+        TablaInfo.setModel(tabla);
+    }
+
+    private void modelo() {
+        DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
+        NodoPrincipal cats = aux.getInicioMulti();
+        System.out.println(": " + cats.getInfo());
+        NodoSegundario subnodo = cats.getNodos().getInicio();
+        int contR = 0, contC = 5;
+        while (cats != null) {
+            while (subnodo != null) {
+                NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+                System.out.println("  " + u.getInfo()); // nombre de la sublista
+                u = u.getSiguiente();
+                int filas = 0, colum = 0;
+                while (u != null) {
+                    contR++;
+                    u = u.getSiguiente();
+                }
+                subnodo = subnodo.getSiguiente();
+            }
+            cats = cats.getSiguiente();
+        }
+        ModeloTabla.setRowCount(contR);
+        ModeloTabla.setColumnCount(contC);
+        mostar_datos(ModeloTabla, contR, contC);
     }
 
     /**
@@ -34,14 +107,14 @@ public class VerStock extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Stock = new javax.swing.JTable();
+        TablaInfo = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Elementos en existencia");
 
-        Tabla_Stock.setModel(new javax.swing.table.DefaultTableModel(
+        TablaInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -52,7 +125,7 @@ public class VerStock extends javax.swing.JDialog {
                 "Nombre del Producto", "Categoria", "SubCategoria", "Referencia", "Cantidad "
             }
         ));
-        jScrollPane1.setViewportView(Tabla_Stock);
+        jScrollPane1.setViewportView(TablaInfo);
 
         jButton3.setText("Aceptar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -95,14 +168,14 @@ public class VerStock extends javax.swing.JDialog {
     private void jButton3cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3cancelar
         this.dispose();
     }//GEN-LAST:event_jButton3cancelar
-    
-    public void modelar(){
-        DefaultTableModel ModeloTabla = (DefaultTableModel) Tabla_Stock.getModel();
+
+    public void modelar() {
+        DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
         int contR = 0, contC = 1;
         int clm = 1;
         // cada producto se va a ir agregando a una columna
-        while(clm <= 5){
-            
+        while (clm <= 5) {
+
         }
         String line;
         Boolean sw = false;
@@ -121,6 +194,7 @@ public class VerStock extends javax.swing.JDialog {
 //        ModeloTabla.setRowCount(contR);
 //        ModeloTabla.setColumnCount(contC);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -149,11 +223,9 @@ public class VerStock extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               VerStock dialog = new VerStock(new javax.swing.JFrame(), true);
+                VerStock dialog = new VerStock(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -166,7 +238,7 @@ public class VerStock extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla_Stock;
+    private javax.swing.JTable TablaInfo;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

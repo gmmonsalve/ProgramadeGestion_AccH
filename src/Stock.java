@@ -290,14 +290,11 @@ public class Stock extends javax.swing.JPanel {
         VerCategoria vcat = new VerCategoria(Menú, true, prod, Stocklist);
         vcat.setVisible(true);
         Stocklist.getNodo(prod);
-//        while(Stocklist.getNodo(prod).getSublista(Stocklist.getNodo(prod)).!=null){
-//        
-//        }
     }//GEN-LAST:event_VerPorCategoria
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        //VerStock add = new VerStock(Menú, true, Stocklist);
-        //add.setVisible(true);        // TODO add your handling code here:
+        VerStock add = new VerStock(Menú, true, Stocklist);
+        add.setVisible(true);        
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseMoved

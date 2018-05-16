@@ -29,11 +29,11 @@ public class VerCategoria extends javax.swing.JDialog {
 
     public VerCategoria(java.awt.Frame aThis, boolean b, String prod, Multilista stock) {
         super(aThis, b);
+        initComponents();
         this.NombreDeCategoria = prod;
         this.aux = stock;
         this.setLocationRelativeTo(null);
         this.modelo();
-        initComponents();
     }
 
     public JLabel getNom_cate() {
@@ -55,9 +55,9 @@ public class VerCategoria extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         nom_cate = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaInfo = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaInfo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,16 +66,6 @@ public class VerCategoria extends javax.swing.JDialog {
         nom_cate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         nom_cate.setForeground(new java.awt.Color(204, 0, 0));
 
-        TablaInfo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(TablaInfo);
-
         jButton2.setText("Aceptar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,22 +73,38 @@ public class VerCategoria extends javax.swing.JDialog {
             }
         });
 
+        TablaInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre del Producto", "Categoria", "SubCategoria", "Referencia", "Cantidad "
+            }
+        ));
+        jScrollPane2.setViewportView(TablaInfo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
                         .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nom_cate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(256, 256, 256)
                         .addComponent(jButton2)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +114,8 @@ public class VerCategoria extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(nom_cate, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jButton2)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -118,7 +124,7 @@ public class VerCategoria extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cancelar
-
+        this.dispose();
     }//GEN-LAST:event_jButton2cancelar
 
     public void setNombreDeCategoria(Object NombreDeCategoria) {
@@ -242,7 +248,7 @@ public class VerCategoria extends javax.swing.JDialog {
     private javax.swing.JTable TablaInfo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nom_cate;
     // End of variables declaration//GEN-END:variables
 
