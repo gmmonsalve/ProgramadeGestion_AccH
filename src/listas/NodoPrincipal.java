@@ -74,7 +74,7 @@ public class NodoPrincipal {
         NodoSegundario nvo = new NodoSegundario(c);
         aux2.setSiguiente(nvo);
         }else{
-            System.out.println("No existe l asublista");
+            System.out.println("No existe la sublista");
         }
         
     }

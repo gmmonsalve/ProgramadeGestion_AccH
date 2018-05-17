@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author LUIS POTTE
@@ -13,22 +12,27 @@
 import Ventanas.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Archivos.procesos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Archivos.procesos;
+
 public class Menú_principal extends javax.swing.JFrame {
-Stock stock = new Stock (this);
+    procesos archivos = new procesos();
+    Stock stock = new Stock(this);
 
-static String Password;
+    static String Password;
 
-    public Menú_principal() {
+    public Menú_principal() throws IOException {
         initComponents();
+        stock.setStocklist(archivos.cargar_stocklist("Stock"));
     }
 
     public static void setPassword(String Password) {
         Menú_principal.Password = Password;
     }
 
-   
-
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -487,21 +491,21 @@ static String Password;
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambcontraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambcontraActionPerformed
-    act.getText();
-    nueva.getText();
+        act.getText();
+        nueva.getText();
     }//GEN-LAST:event_cambcontraActionPerformed
 
     private void botonstockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseExited
-   botonstock.setBackground(new java.awt.Color(232, 190, 168));
-   pop.show();// TODO add your handling code here:
+        botonstock.setBackground(new java.awt.Color(232, 190, 168));
+        pop.show();// TODO add your handling code here:
     }//GEN-LAST:event_botonstockMouseExited
 
     private void botonstockMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseMoved
-       botonstock.setBackground(new java.awt.Color(214, 177, 161));      // TODO add your handling code here:
+        botonstock.setBackground(new java.awt.Color(214, 177, 161));      // TODO add your handling code here:
     }//GEN-LAST:event_botonstockMouseMoved
 
     private void botonstockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseClicked
-       abrir_panel(stock,"Stock");        // TODO add your handling code here:
+        abrir_panel(stock, "Stock");        // TODO add your handling code here:
     }//GEN-LAST:event_botonstockMouseClicked
 
     private void botonventaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonventaMouseExited
@@ -513,43 +517,44 @@ static String Password;
     }//GEN-LAST:event_botonventaMouseMoved
 
     private void botonventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonventaMouseClicked
-    abrir_panel(ventas,"Ventas");         // TODO add your handling code here:
+        Venta V = new Venta(this);
+        abrir_panel(V, "Ventas");
     }//GEN-LAST:event_botonventaMouseClicked
 
     private void clientesbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseClicked
-    abrir_panel(clientes,"Clientes");        // TODO add your handling code here:
+        abrir_panel(clientes, "Clientes");        // TODO add your handling code here:
     }//GEN-LAST:event_clientesbotonMouseClicked
 
     private void clientesbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseExited
-     clientesboton.setBackground(new java.awt.Color(232, 190, 168)); 
+        clientesboton.setBackground(new java.awt.Color(232, 190, 168));
     }//GEN-LAST:event_clientesbotonMouseExited
 
     private void clientesbotonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseMoved
-      clientesboton.setBackground(new java.awt.Color(214, 177, 161));   // TODO add your handling code here:
+        clientesboton.setBackground(new java.awt.Color(214, 177, 161));   // TODO add your handling code here:
     }//GEN-LAST:event_clientesbotonMouseMoved
 
     private void encargosbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseClicked
-    abrir_panel(encargos,"Encargos");        // TODO add your handling code here:
+        abrir_panel(encargos, "Encargos");        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseClicked
 
     private void encargosbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseExited
-     encargosbot.setBackground(new java.awt.Color(232, 190, 168));    // TODO add your handling code here:
+        encargosbot.setBackground(new java.awt.Color(232, 190, 168));    // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseExited
 
     private void encargosbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseMoved
-      encargosbot.setBackground(new java.awt.Color(214, 177, 161));  // TODO add your handling code here:
+        encargosbot.setBackground(new java.awt.Color(214, 177, 161));  // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseMoved
 
     private void provedoresbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseClicked
-    abrir_panel(provedores,"Proveedores");        // TODO add your handling code here:
+        abrir_panel(provedores, "Proveedores");        // TODO add your handling code here:
     }//GEN-LAST:event_provedoresbotMouseClicked
 
     private void ajustesbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseClicked
-    abrir_panel(config,"Configuración");        // TODO add your handling code here:
+        abrir_panel(config, "Configuración");        // TODO add your handling code here:
     }//GEN-LAST:event_ajustesbotMouseClicked
 
     private void ajustesbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseExited
-       ajustesbot.setBackground(new java.awt.Color(232, 190, 168)); // TODO add your handling code here:
+        ajustesbot.setBackground(new java.awt.Color(232, 190, 168)); // TODO add your handling code here:
     }//GEN-LAST:event_ajustesbotMouseExited
 
     private void ajustesbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseMoved
@@ -557,36 +562,45 @@ static String Password;
     }//GEN-LAST:event_ajustesbotMouseMoved
 
     private void provedoresbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseMoved
-      provedoresbot.setBackground(new java.awt.Color(214, 177, 161));
-       // TODO add your handling code here:
+        provedoresbot.setBackground(new java.awt.Color(214, 177, 161));
+        // TODO add your handling code here:
     }//GEN-LAST:event_provedoresbotMouseMoved
 
     private void provedoresbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseExited
-      provedoresbot.setBackground(new java.awt.Color(232, 190, 168));  // TODO add your handling code here:
+        provedoresbot.setBackground(new java.awt.Color(232, 190, 168));  // TODO add your handling code here:
     }//GEN-LAST:event_provedoresbotMouseExited
 
     private void op5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op5ActionPerformed
-        cerrar_sesion();
+        try {
+            cerrar_sesion();
+        } catch (IOException ex) {
+            Logger.getLogger(Menú_principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_op5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        tabbed.add("Configuración",config);
+        tabbed.add("Configuración", config);
         tabbed.setSelectedComponent(config);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    public void eliminar_de_tabbed (){
-        tabbed.remove(stock);
+    public void eliminar_de_tabbed(javax.swing.JPanel p) {
+        tabbed.remove(p);
     }
-    public void abrir_panel(JPanel p, String titulo){
-    tabbed.add(titulo,p);
-    tabbed.setSelectedComponent(p);
+
+    public void abrir_panel(JPanel p, String titulo) {
+        tabbed.add(titulo, p);
+        tabbed.setSelectedComponent(p);
     }
-    public void cerrar_sesion(){
-    this.dispose();
-    Login k = new Login();
-    k.setVisible(true);
+
+    public int cerrar_sesion() throws IOException {
+        procesos pr = new procesos ();
+        pr.actualiza_archivo_Stock("Stock", stock.Stocklist);
+        this.dispose();
+        Login k = new Login();
+        k.setVisible(true);
+        return 1;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -617,8 +631,12 @@ static String Password;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menú_principal().setVisible(true);
-             }
+                try {
+                    new Menú_principal().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Menú_principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         });
     }
 

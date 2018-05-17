@@ -1,19 +1,21 @@
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import Archivos.procesos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Estudiantes
  */
 public class Login extends javax.swing.JFrame {
-
     /**
      * Creates new form Login
      */
@@ -21,7 +23,6 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         botonInicio.setBackground(new java.awt.Color(214, 177, 161));
         contrasena.setBackground(null);
-      
         this.setLocationRelativeTo(null);
     }
 
@@ -125,28 +126,32 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 String contra = "aherrera";
     private void botonInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseExited
-      botonInicio.setBackground(new java.awt.Color(232, 190, 168));
+        botonInicio.setBackground(new java.awt.Color(232, 190, 168));
     }//GEN-LAST:event_botonInicioMouseExited
 
     private void botonInicioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseMoved
-         botonInicio.setBackground(new java.awt.Color(214, 177, 161));
+        botonInicio.setBackground(new java.awt.Color(214, 177, 161));
     }//GEN-LAST:event_botonInicioMouseMoved
 
     private void botonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseClicked
-     contrasena.getText();
-       err.setText("");
-     if(contrasena.getText().equals(contra)){
-        Menú_principal mn = new Menú_principal();
-        mn.setVisible(true);
-        mn.setLocationRelativeTo(null);
-        this.dispose();
-        }else{
-        if(contrasena.getText().equals("")){
-        err.setText("*Por favor digite la contraseña");
-        }else{
-            err.setText("*Contraseña errónea");
-            contrasena.setText("");
-        }
+        contrasena.getText();
+        err.setText("");
+        if (contrasena.getText().equals(contra)) {
+            try {
+                Menú_principal mn = new Menú_principal();
+                mn.setVisible(true);
+                mn.setLocationRelativeTo(null);
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            if (contrasena.getText().equals("")) {
+                err.setText("*Por favor digite la contraseña");
+            } else {
+                err.setText("*Contraseña errónea");
+                contrasena.setText("");
+            }
         }   // TODO add your handling code here:
     }//GEN-LAST:event_botonInicioMouseClicked
 
@@ -159,7 +164,7 @@ String contra = "aherrera";
     }//GEN-LAST:event_contrasenaMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-     linea.setBackground(new java.awt.Color(214, 177, 161));   // TODO add your handling code here:
+        linea.setBackground(new java.awt.Color(214, 177, 161));   // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MouseClicked
 
     /**

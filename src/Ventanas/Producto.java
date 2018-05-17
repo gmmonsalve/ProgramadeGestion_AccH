@@ -144,6 +144,10 @@ public class Producto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     String k,l;
+    
+    public Producto(){
+        
+    }
     public Producto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

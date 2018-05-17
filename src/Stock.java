@@ -32,6 +32,14 @@ public class Stock extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(153, 153, 255));
     }
 
+    public Multilista getStocklist() {
+        return Stocklist;
+    }
+
+    public void setStocklist(Multilista Stocklist) {
+        this.Stocklist = Stocklist;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -227,7 +235,7 @@ public class Stock extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel5Salir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5Salir
-        Menú.eliminar_de_tabbed();
+        Menú.eliminar_de_tabbed(this);
     }//GEN-LAST:event_jLabel5Salir
 
     private void add_categoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_categoria

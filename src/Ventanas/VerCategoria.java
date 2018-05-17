@@ -133,29 +133,27 @@ public class VerCategoria extends javax.swing.JDialog {
 
     private void mostar_datos(DefaultTableModel tabla, int n, int m) {
         DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
-        System.out.println("Entró a mostraar datos"+ NombreDeCategoria);
+        System.out.println("Entró a mostraar datos" + NombreDeCategoria);
         NodoPrincipal cats = aux.getNodo(NombreDeCategoria);
         System.out.println(": " + cats.getInfo());
-        //imprimo todos los productos de las subcategorias que se hicieron en la categoria
+        //imprime todos los productos de las subcategorias que se hicieron en la categoria
         NodoSegundario subnodo = cats.getNodos().getInicio();
         while (subnodo != null) {
             NodoSegundario u = (NodoSegundario) subnodo.getInfo();
-            System.out.println("  " + u.getInfo()); // nombre de la sublista
             u = u.getSiguiente();
             int row = 0, column = 0;
             while (u != null) {
-                System.out.println("entró a porductos info");
                 // informacion del producto
                 Producto infoProducto = (Producto) u.getInfo();
+                tabla.setValueAt(infoProducto.getNombre(), row, column);
+                column++;
                 tabla.setValueAt(infoProducto.getCategoria(), row, column);
                 column++;
-                tabla.setValueAt(infoProducto.getCantidad(), row, column);
-                column++;
-                tabla.setValueAt(infoProducto.getNombre(), row, column);
+                tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
                 column++;
                 tabla.setValueAt(infoProducto.getReferencia(), row, column);
                 column++;
-                tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
+                tabla.setValueAt(infoProducto.getCantidad(), row, column);
                 column++;
                 u = u.getSiguiente();
                 row++;
@@ -165,15 +163,15 @@ public class VerCategoria extends javax.swing.JDialog {
         }
         TablaInfo.setModel(tabla);
     }
-    
-    private void modelo(){
+
+    private void modelo() {
         DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
-        System.out.println("Entró a mostraar datos"+ NombreDeCategoria);
+        System.out.println("Entró a mostraar datos" + NombreDeCategoria);
         NodoPrincipal cats = aux.getNodo(NombreDeCategoria);
         System.out.println(": " + cats.getInfo());
         //imprimo todos los productos de las subcategorias que se hicieron en la categoria
         NodoSegundario subnodo = cats.getNodos().getInicio();
-        int contR=0, contC=5; 
+        int contR = 0, contC = 5;
         while (subnodo != null) {
             NodoSegundario u = (NodoSegundario) subnodo.getInfo();
             System.out.println("  " + u.getInfo()); // nombre de la sublista
@@ -185,7 +183,7 @@ public class VerCategoria extends javax.swing.JDialog {
             }
             subnodo = subnodo.getSiguiente();
         }
-        
+
         ModeloTabla.setRowCount(contR);
         ModeloTabla.setColumnCount(contC);
         mostar_datos(ModeloTabla, contR, contC);

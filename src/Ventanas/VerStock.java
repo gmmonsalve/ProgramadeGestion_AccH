@@ -21,17 +21,16 @@ public class VerStock extends javax.swing.JDialog {
     /**
      * Creates new form VerStock
      */
-    
     public VerStock(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    
+
     public VerStock(java.awt.Frame parent, boolean modal, Multilista Stock) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
         this.aux = Stock;
+        this.setLocationRelativeTo(null);
         this.modelo();
     }
 
@@ -39,26 +38,23 @@ public class VerStock extends javax.swing.JDialog {
         DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
         NodoPrincipal cats = aux.getInicioMulti();
         while (cats != null) {
-            System.out.println(": " + cats.getInfo());
             NodoSegundario subnodo = cats.getNodos().getInicio();
             while (subnodo != null) {
                 NodoSegundario u = (NodoSegundario) subnodo.getInfo();
-                System.out.println("  " + u.getInfo()); // nombre de la sublista
                 u = u.getSiguiente();
                 int row = 0, column = 0;
                 while (u != null) {
-                    System.out.println("entró a porductos info");
                     // informacion del producto
                     Producto infoProducto = (Producto) u.getInfo();
+                    tabla.setValueAt(infoProducto.getNombre(), row, column);
+                    column++;
                     tabla.setValueAt(infoProducto.getCategoria(), row, column);
                     column++;
-                    tabla.setValueAt(infoProducto.getCantidad(), row, column);
-                    column++;
-                    tabla.setValueAt(infoProducto.getNombre(), row, column);
+                    tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
                     column++;
                     tabla.setValueAt(infoProducto.getReferencia(), row, column);
                     column++;
-                    tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
+                    tabla.setValueAt(infoProducto.getCantidad(), row, column);
                     column++;
                     u = u.getSiguiente();
                     row++;

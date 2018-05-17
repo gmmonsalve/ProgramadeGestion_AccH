@@ -1,0 +1,8 @@
+-bolso
+--mano
+---fashion,bmf1,mano,bolso,3,
+--totto
+-manillas
+--hombre
+---ancla,mhan1,hombre,manillas,8,
+--mujer
