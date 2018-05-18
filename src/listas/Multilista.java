@@ -32,7 +32,7 @@ public class Multilista extends Lista{
 
     public NodoPrincipal getNodo(Object o) {
         NodoPrincipal s = inicio;
-        while (!s.getInfo().equals(o) && s.getSiguiente()!=null) {
+        while (!s.getInfo().equals(o) && s!=null) {
             s = s.getSiguiente();
         }
         return s;

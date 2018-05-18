@@ -37,12 +37,12 @@ public class VerStock extends javax.swing.JDialog {
     private void mostar_datos(DefaultTableModel tabla, int n, int m) {
         DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
         NodoPrincipal cats = aux.getInicioMulti();
+        int row = 0, column = 0;
         while (cats != null) {
             NodoSegundario subnodo = cats.getNodos().getInicio();
             while (subnodo != null) {
                 NodoSegundario u = (NodoSegundario) subnodo.getInfo();
                 u = u.getSiguiente();
-                int row = 0, column = 0;
                 while (u != null) {
                     // informacion del producto
                     Producto infoProducto = (Producto) u.getInfo();
@@ -70,10 +70,9 @@ public class VerStock extends javax.swing.JDialog {
     private void modelo() {
         DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
         NodoPrincipal cats = aux.getInicioMulti();
-        System.out.println(": " + cats.getInfo());
-        NodoSegundario subnodo = cats.getNodos().getInicio();
         int contR = 0, contC = 5;
         while (cats != null) {
+            NodoSegundario subnodo = cats.getNodos().getInicio();
             while (subnodo != null) {
                 NodoSegundario u = (NodoSegundario) subnodo.getInfo();
                 System.out.println("  " + u.getInfo()); // nombre de la sublista

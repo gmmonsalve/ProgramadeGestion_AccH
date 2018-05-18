@@ -102,7 +102,6 @@ public class procesos {
             }
             aux = aux.getSiguiente();
         }
-        y.println();
         y.close();
         x.close();
         w.close();

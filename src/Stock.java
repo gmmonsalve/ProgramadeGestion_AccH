@@ -39,7 +39,7 @@ public class Stock extends javax.swing.JPanel {
     public void setStocklist(Multilista Stocklist) {
         this.Stocklist = Stocklist;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -269,7 +269,7 @@ public class Stock extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Ha digitado un valor de forma incorrecta intente de nuevo");
             this.add_producto(evt);
-        }       
+        }
     }//GEN-LAST:event_add_producto
 
     private void eliminar_producto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_producto
@@ -290,31 +290,42 @@ public class Stock extends javax.swing.JPanel {
                 this.eliminar_producto(evt);
             }
         } catch (NullPointerException e) {
-        }       
+        }
     }//GEN-LAST:event_eliminar_producto
 
     private void VerPorCategoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerPorCategoria
         String prod = JOptionPane.showInputDialog("Digite el nombre de la categria que desea ver");
-        VerCategoria vcat = new VerCategoria(Menú, true, prod, Stocklist);
-        vcat.setVisible(true);
-        Stocklist.getNodo(prod);
+        System.out.println("pord: "+prod);
+        if (prod != null) {
+            if (!prod.equals("")) {
+                VerCategoria vcat = new VerCategoria(Menú, true, prod, Stocklist);
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha digitado ninguna categoria, intente de nuevo");
+                this.VerPorCategoria(evt);
+            }
+        } else {
+            int op = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cancelar el proceso?", "Alerta!", JOptionPane.YES_NO_OPTION);
+            if (op != 0) {
+                this.VerPorCategoria(evt);
+            }
+        }
     }//GEN-LAST:event_VerPorCategoria
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         VerStock add = new VerStock(Menú, true, Stocklist);
-        add.setVisible(true);        
+        add.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseMoved
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));        // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new java.awt.Color(153, 153, 255));   // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseMoved
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));   // TODO add your handling code here:
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
     }//GEN-LAST:event_jPanel2MouseMoved
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited

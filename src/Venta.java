@@ -144,7 +144,7 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_Salir
 
     private void jPanel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseMoved
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));        // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));        
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void Realizar_Nueva_Venta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_Nueva_Venta
@@ -152,19 +152,19 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_Realizar_Nueva_Venta
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new java.awt.Color(153, 153, 255));   // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));  
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseMoved
-        // TODO add your handling code here:
+        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
     }//GEN-LAST:event_jPanel5MouseMoved
 
     private void Ver_Ventas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_Ventas
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_Ver_Ventas
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        // TODO add your handling code here:
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_jPanel5MouseExited
 
 
