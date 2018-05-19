@@ -17,8 +17,17 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Archivos.procesos;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.nio.file.Path;
 
 public class Menú_principal extends javax.swing.JFrame {
+
     procesos archivos = new procesos();
     Stock stock = new Stock(this);
 
@@ -27,10 +36,37 @@ public class Menú_principal extends javax.swing.JFrame {
     public Menú_principal() throws IOException {
         initComponents();
         stock.setStocklist(archivos.cargar_stocklist("Stock"));
+
     }
 
-    public static void setPassword(String Password) {
-        Menú_principal.Password = Password;
+    public String getContrasena() throws FileNotFoundException, IOException {
+        String password = null;
+        File v = new File("pass.txt");
+        FileReader fr = new FileReader(v);
+        BufferedReader br = new BufferedReader(fr);
+        String line;
+        while (br.ready()) {
+            line = br.readLine();
+            password = line;
+        }
+        br.close();
+        fr.close();
+        return password;
+    }
+
+    public void setContrasena(String ncontra, File archivo) throws IOException {    
+        
+        File nuevo = new File(archivo.getAbsolutePath()+".txt");
+        
+        FileWriter w = new FileWriter(nuevo, true);
+        BufferedWriter x = new BufferedWriter(w);
+        PrintWriter y = new PrintWriter(x);
+        y.println(ncontra);
+        y.close();
+        x.close();
+        w.close();
+       archivo.delete();
+       nuevo.renameTo(archivo);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,8 +85,15 @@ public class Menú_principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        n2 = new javax.swing.JPasswordField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        error = new javax.swing.JLabel();
+        as1 = new javax.swing.JLabel();
+        as2 = new javax.swing.JLabel();
+        as3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         pop = new javax.swing.JPopupMenu();
         lab = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -131,73 +174,66 @@ public class Menú_principal extends javax.swing.JFrame {
         );
 
         config.setBackground(new java.awt.Color(255, 255, 255));
+        config.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        config.add(act, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 197, -1));
+        config.add(nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 197, -1));
 
-        act.setText("contraseña ");
-
+        cambcontra.setBackground(new java.awt.Color(204, 204, 255));
         cambcontra.setText("Cambiar contraseña");
+        cambcontra.setBorder(null);
+        cambcontra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cambcontra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cambcontraActionPerformed(evt);
             }
         });
+        config.add(cambcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 130, 30));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Contraseña actual:");
+        config.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 100, 20));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Nueva contraseña: ");
+        config.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 100, 20));
 
-        jLabel3.setText("Cambiar contraseña.");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("C O N F I G U R A C I Ó N");
+        config.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Confirme contraseña:");
+        config.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 110, 20));
+        config.add(n2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, -1));
 
-        javax.swing.GroupLayout configLayout = new javax.swing.GroupLayout(config);
-        config.setLayout(configLayout);
-        configLayout.setHorizontalGroup(
-            configLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(configLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configLayout.createSequentialGroup()
-                        .addComponent(cambcontra)
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, configLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(act)
-                        .addComponent(nueva, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(128, 128, 128))
-            .addGroup(configLayout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addGroup(configLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        configLayout.setVerticalGroup(
-            configLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(configLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(nueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(cambcontra)
-                .addGap(74, 74, 74))
-        );
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Cambiar tu contraseña a menudo te permetirá mantener tu información más segura. ");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 490, 30));
+
+        config.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 500, 50));
+        config.add(error, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 200, 40));
+        config.add(as1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, 20));
+        config.add(as2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 244, 50, 20));
+        config.add(as3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 40, 20));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("X");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        config.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, -1));
 
         lab.setText("Stock");
 
@@ -389,23 +425,23 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("PROVEDORES");
+        jLabel10.setText("PROVEEDORES");
 
         javax.swing.GroupLayout provedoresbotLayout = new javax.swing.GroupLayout(provedoresbot);
         provedoresbot.setLayout(provedoresbotLayout);
         provedoresbotLayout.setHorizontalGroup(
             provedoresbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, provedoresbotLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(29, 29, 29))
+                .addGap(22, 22, 22))
         );
         provedoresbotLayout.setVerticalGroup(
             provedoresbotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, provedoresbotLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addGap(31, 31, 31))
+                .addGap(32, 32, 32))
         );
 
         Panel_principal.add(provedoresbot, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 190, 90));
@@ -491,8 +527,41 @@ public class Menú_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cambcontraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambcontraActionPerformed
-        act.getText();
-        nueva.getText();
+        String cact, cnueva, cnueva2;
+        cact = act.getText();
+        cnueva = nueva.getText();
+        cnueva2 = n2.getText();
+        if (!cact.isEmpty() & !cnueva.isEmpty() & !cnueva2.isEmpty()) {
+            try {
+                if (cnueva.equals(cnueva2)) {
+                    if (cact.equals(getContrasena())) {
+                        File archivo = new File("pass.txt");
+                        setContrasena(cnueva,archivo); 
+                        JOptionPane.showMessageDialog(null, "La contraseña ha sido cambiada exitosamente");
+                    } else {
+                         JOptionPane.showMessageDialog(null,"*La contraseña es incorrecta.");
+                        
+                        as1.setText("*");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,"*La nueva contraseña no coincide");
+                   
+                    as2.setText("*");
+                    as3.setText("*");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Menú_principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene los campos correspondientes por favor");
+        }
+        act.setText(null);
+        nueva.setText(null);
+        n2.setText(null);
+        as1.setText(null);
+        as2.setText(null);
+        as3.setText(null);
+
     }//GEN-LAST:event_cambcontraActionPerformed
 
     private void botonstockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseExited
@@ -583,6 +652,10 @@ public class Menú_principal extends javax.swing.JFrame {
         tabbed.setSelectedComponent(config);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+tabbed.remove(config);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void eliminar_de_tabbed(javax.swing.JPanel p) {
         tabbed.remove(p);
     }
@@ -593,7 +666,7 @@ public class Menú_principal extends javax.swing.JFrame {
     }
 
     public int cerrar_sesion() throws IOException {
-        procesos pr = new procesos ();
+        procesos pr = new procesos();
         pr.actualiza_archivo_Stock("Stock", stock.Stocklist);
         this.dispose();
         Login k = new Login();
@@ -645,6 +718,9 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_principal;
     private javax.swing.JPasswordField act;
     private javax.swing.JPanel ajustesbot;
+    private javax.swing.JLabel as1;
+    private javax.swing.JLabel as2;
+    private javax.swing.JLabel as3;
     private javax.swing.JPanel botonstock;
     private javax.swing.JPanel botonventa;
     private javax.swing.JButton cambcontra;
@@ -653,10 +729,13 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JPanel config;
     private javax.swing.JPanel encargos;
     private javax.swing.JPanel encargosbot;
+    private javax.swing.JLabel error;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -670,8 +749,9 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lab;
+    private javax.swing.JPasswordField n2;
     private javax.swing.JPasswordField nueva;
     private javax.swing.JMenuItem op5;
     private javax.swing.JPopupMenu pop;
