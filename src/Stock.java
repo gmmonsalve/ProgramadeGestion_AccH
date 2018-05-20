@@ -251,7 +251,7 @@ public class Stock extends javax.swing.JPanel {
         add.add_combocat(Combo_Categorias);
         add.setVisible(true);
         Stocklist.add_sublista(add.getCategoria(), add.getNombre());
-        Stocklist.print();        // TODO add your handling code here:
+        Stocklist.print();        
     }//GEN-LAST:event_add_subcategoria
 
     private void add_producto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_producto
@@ -295,7 +295,6 @@ public class Stock extends javax.swing.JPanel {
 
     private void VerPorCategoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VerPorCategoria
         String prod = JOptionPane.showInputDialog("Digite el nombre de la categria que desea ver");
-        System.out.println("pord: "+prod);
         if (prod != null) {
             if (!prod.equals("")) {
                 VerCategoria vcat = new VerCategoria(Menú, true, prod, Stocklist);

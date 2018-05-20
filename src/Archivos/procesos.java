@@ -80,8 +80,9 @@ public class procesos {
     }
 
     public void actualiza_archivo_Stock(String Nombre_archivo, Multilista list) throws IOException {
-        File archivo = new File(Nombre_archivo + ".txt");
-        FileWriter w = new FileWriter(archivo, true);
+        File viejo = new File(Nombre_archivo+".txt");
+        File nuevo = new File(viejo.getAbsolutePath()+".txt");
+        FileWriter w = new FileWriter(nuevo, true);
         BufferedWriter x = new BufferedWriter(w);
         PrintWriter y = new PrintWriter(x);
         NodoPrincipal aux = list.getInicioMulti();
@@ -105,6 +106,8 @@ public class procesos {
         y.close();
         x.close();
         w.close();
+        viejo.delete();
+        nuevo.renameTo(viejo);
     }
 
     private Producto crear_producto(String s) {

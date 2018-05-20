@@ -32,9 +32,8 @@ public class Menú_principal extends javax.swing.JFrame {
 
     public Menú_principal() throws IOException {
         initComponents();
-         this.setLocationRelativeTo(null);
-//            stock.setStocklist(archivos.cargar_stocklist("Stock"));
-
+        this.setLocationRelativeTo(null);
+        stock.setStocklist(archivos.cargar_stocklist("Stock"));
 
     }
 
@@ -601,7 +600,7 @@ public class Menú_principal extends javax.swing.JFrame {
 
     private void clientesbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseExited
         clientesboton.setBackground(new java.awt.Color(232, 190, 168));
-                clientesboton.setToolTipText("Contiene la información relacionada de los clientes");
+        clientesboton.setToolTipText("Contiene la información relacionada de los clientes");
 //       
     }//GEN-LAST:event_clientesbotonMouseExited
 
@@ -614,8 +613,8 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_encargosbotMouseClicked
 
     private void encargosbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseExited
-        encargosbot.setBackground(new java.awt.Color(232, 190, 168));  
-         encargosbot.setToolTipText("Permite visualizar los encargos y pedidos realizados");
+        encargosbot.setBackground(new java.awt.Color(232, 190, 168));
+        encargosbot.setToolTipText("Permite visualizar los encargos y pedidos realizados");
 //        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseExited
 
@@ -633,7 +632,7 @@ public class Menú_principal extends javax.swing.JFrame {
 
     private void ajustesbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseExited
         ajustesbot.setBackground(new java.awt.Color(232, 190, 168));
-        
+
         ajustesbot.setToolTipText("Permite cambiar la contraseña cuando se desee");// TODO add your handling code here:
     }//GEN-LAST:event_ajustesbotMouseExited
 

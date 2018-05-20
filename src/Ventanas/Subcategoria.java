@@ -14,9 +14,11 @@ import java.awt.Font;
  * @author LUIS POTTE
  */
 public class Subcategoria extends javax.swing.JDialog {
+
     private String nombre;
-    private Object categoria; 
+    private Object categoria;
     String k;
+
     /**
      * Creates new form Subcategoria
      */
@@ -26,16 +28,16 @@ public class Subcategoria extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         k = nom.getText();
     }
-    
-    public void add_combocat(javax.swing.JComboBox<String> jcbx){
-        for(int i=0; i < jcbx.getItemCount();i++){
+
+    public void add_combocat(javax.swing.JComboBox<String> jcbx) {
+        for (int i = 0; i < jcbx.getItemCount(); i++) {
             boolean sw = true;
-            for (int j = 0; j <comboCategorias.getItemCount(); j++) {
-                if (jcbx.getItemAt(i).equals(comboCategorias.getItemAt(j))){
-                    sw=false;
+            for (int j = 0; j < comboCategorias.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(comboCategorias.getItemAt(j))) {
+                    sw = false;
                 }
             }
-            if(sw==true){
+            if (sw == true) {
                 this.comboCategorias.addItem(jcbx.getItemAt(i));
             }
         }
@@ -56,7 +58,7 @@ public class Subcategoria extends javax.swing.JDialog {
     public void setCategoria(Object categoria) {
         this.categoria = categoria;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,12 +160,13 @@ public class Subcategoria extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setNombre(nom.getText());
-        this.setCategoria(comboCategorias.getItemListeners());
+        this.setCategoria(comboCategorias.getSelectedItem());
+        System.out.println("cat"+ this.getCategoria());
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomMouseClicked
-        if(nom.getText().equals(k)){
+        if (nom.getText().equals(k)) {
             nom.setText("");
             cambiarFuente(nom);
         }
@@ -173,11 +176,12 @@ public class Subcategoria extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomActionPerformed
 
-    public void cambiarFuente(Component n){
-    n.setForeground(Color.BLACK);
-    Font f = new Font("Tahoma",Font.BOLD,10);
-    n.setFont(f);
+    public void cambiarFuente(Component n) {
+        n.setForeground(Color.BLACK);
+        Font f = new Font("Tahoma", Font.BOLD, 10);
+        n.setFont(f);
     }
+
     /**
      * @param args the command line arguments
      */

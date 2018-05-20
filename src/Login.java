@@ -179,6 +179,7 @@ public class Login extends javax.swing.JFrame {
                 Menú_principal mn = new Menú_principal();
                 mn.setVisible(true);
                 this.dispose();
+                
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -212,7 +213,7 @@ public class Login extends javax.swing.JFrame {
         try {
             Socket s = new Socket("www.gmail.com", 80);
             if (s.isConnected()) {
-                Correo c = new Correo("gbrielamonsalve@gmail.com", "-Recuperación de Contraseña | Accesorios Herrera -", "do.not.reply.aher@gmail.com", "aherrera", contrasen);
+                Correo c = new Correo("lpotte@uninorte.edu.co", "-Recuperación de Contraseña | Accesorios Herrera -", "do.not.reply.aher@gmail.com", "aherrera", contrasen);
                 try {
                     c.SendMail(numerosAutenticacion());
                 } catch (IOException ex) {
