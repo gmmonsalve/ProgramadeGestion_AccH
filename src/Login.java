@@ -1,10 +1,14 @@
 
+import java.net.Socket;
 import java.awt.Color;
-import javax.swing.JOptionPane;
-import Archivos.procesos;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,14 +20,34 @@ import java.util.logging.Logger;
  * @author Estudiantes
  */
 public class Login extends javax.swing.JFrame {
+
     /**
      * Creates new form Login
+     *
      */
-    public Login() {
+    static String contrasen;
+
+    public Login() throws IOException {
+
         initComponents();
         botonInicio.setBackground(new java.awt.Color(214, 177, 161));
         contrasena.setBackground(null);
         this.setLocationRelativeTo(null);
+        contrasen = getContrasena();
+        jButton1.setToolTipText("recupera tu contraseña a través de correo electrónico.");
+    }
+
+    public static String getContrasena() throws FileNotFoundException, IOException {
+        String password = null;
+        File v = new File("pass.txt");
+        try (FileReader fr = new FileReader(v); BufferedReader br = new BufferedReader(fr)) {
+            String line;
+            while (br.ready()) {
+                line = br.readLine();
+                password = line;
+            }
+        }
+        return password;
     }
 
     /**
@@ -35,6 +59,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        con = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         contrasena = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -43,8 +68,11 @@ public class Login extends javax.swing.JFrame {
         linea = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         err = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        con.setText("Diosesamorgmmm99");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -110,21 +138,32 @@ public class Login extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 50, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 50, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -310, 570, 740));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -310, 570, 690));
+        jPanel1.add(err, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 210, 20));
+
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1.setText("Olvidé mi contraseña");
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 150, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/acua.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 400, 400, 330));
-        jPanel1.add(err, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 210, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 410, 400, 330));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 653));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-String contra = "aherrera";
+
     private void botonInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseExited
         botonInicio.setBackground(new java.awt.Color(232, 190, 168));
     }//GEN-LAST:event_botonInicioMouseExited
@@ -134,25 +173,26 @@ String contra = "aherrera";
     }//GEN-LAST:event_botonInicioMouseMoved
 
     private void botonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseClicked
-        contrasena.getText();
         err.setText("");
-        if (contrasena.getText().equals(contra)) {
+        if (contrasena.getText().equals(contrasen)) {
             try {
                 Menú_principal mn = new Menú_principal();
                 mn.setVisible(true);
-                mn.setLocationRelativeTo(null);
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else {
             if (contrasena.getText().equals("")) {
                 err.setText("*Por favor digite la contraseña");
+
             } else {
                 err.setText("*Contraseña errónea");
                 contrasena.setText("");
             }
         }   // TODO add your handling code here:
+
     }//GEN-LAST:event_botonInicioMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -161,12 +201,96 @@ String contra = "aherrera";
 
     private void contrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrasenaMouseClicked
         linea.setBackground(Color.yellow);
+        
     }//GEN-LAST:event_contrasenaMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         linea.setBackground(new java.awt.Color(214, 177, 161));   // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Socket s = new Socket("www.gmail.com", 80);
+            if (s.isConnected()) {
+                Correo c = new Correo("gbrielamonsalve@gmail.com", "-Recuperación de Contraseña | Accesorios Herrera -", "do.not.reply.aher@gmail.com", "aherrera", contrasen);
+                try {
+                    c.SendMail(numerosAutenticacion());
+                } catch (IOException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (IOException e) {
+           JOptionPane.showMessageDialog(null, "No se pudo establecer la conexión a Internet", "Error de autenticación",JOptionPane.ERROR_MESSAGE);
+        }
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+//    public static String Username = "do.not.reply.aher@gmail.com";
+//    public static String PassWord = "aherrera";
+//    String To = "gbrielamonsalve@gmail.com";
+//    String Subject = "-Recuperación de Contraseña | Accesorios Herrera -";
+
+    public String numerosAutenticacion() {
+        Integer a, b, c, d;
+        a = (int) (Math.random() * 9);
+        b = (int) (Math.random() * 9);
+        c = (int) (Math.random() * 9);
+        d = (int) (Math.random() * 9);
+        String i = a.toString() + b.toString() + c.toString() + d.toString();
+        System.out.println(i);
+        return i;
+    }
+
+//    public void SendMail(String coda) throws IOException {
+//        String Mensage = "¡Hola!: Es una pena que hayas olvidado tu contraseña, pero no te preocupes, digita el siguiente código en el programa para recuperar tu contraseña: "
+//                + "  "
+//                + "  " + coda + "  "
+//                + " Recuerda: cambiar tu contraseña a menudo permite que tengas mayor seguridad.";
+//        String respuesta;
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.port", "587");
+//        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+//        Session session = Session.getInstance(props,
+//                new javax.mail.Authenticator() {
+//            @Override
+//            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+//                return new javax.mail.PasswordAuthentication(Username, PassWord);
+//            }
+//        });
+//
+//        try {
+//
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(Username));
+//            message.setRecipients(Message.RecipientType.TO,
+//                    InternetAddress.parse(To));
+//            message.setSubject(Subject);
+//            message.setText(Mensage);
+//            Transport.send(message);
+//            JOptionPane.showMessageDialog(this, "Se ha enviado un número de autenticación a tu correo electrónico");
+//            respuesta = JOptionPane.showInputDialog(null, "Escribe tu nombre");
+//            confirm(respuesta, coda);
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    public void confirm(String respuesta, String coda) throws IOException {
+//        if (respuesta != null) {
+//            if (respuesta.equals(coda)) {
+//                JOptionPane.showMessageDialog(this, "Su contraseña es: " + contrasen);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Fallo en la autenticación, vuelva a intentarlo", "Error de Atenticación", JOptionPane.ERROR_MESSAGE);
+//            }
+//
+//        } else {
+//            System.out.println("jeje");
+//        }
+//
+//    }
     /**
      * @param args the command line arguments
      */
@@ -195,17 +319,21 @@ String contra = "aherrera";
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new Login().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botonInicio;
+    private javax.swing.JPasswordField con;
     private javax.swing.JPasswordField contrasena;
     private javax.swing.JLabel err;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

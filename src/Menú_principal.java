@@ -9,10 +9,8 @@
  *
  * @author LUIS POTTE
  */
-import Ventanas.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import Archivos.procesos;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.nio.file.Path;
 
 public class Menú_principal extends javax.swing.JFrame {
 
@@ -35,7 +32,9 @@ public class Menú_principal extends javax.swing.JFrame {
 
     public Menú_principal() throws IOException {
         initComponents();
-        stock.setStocklist(archivos.cargar_stocklist("Stock"));
+         this.setLocationRelativeTo(null);
+//            stock.setStocklist(archivos.cargar_stocklist("Stock"));
+
 
     }
 
@@ -54,10 +53,9 @@ public class Menú_principal extends javax.swing.JFrame {
         return password;
     }
 
-    public void setContrasena(String ncontra, File archivo) throws IOException {    
-        
-        File nuevo = new File(archivo.getAbsolutePath()+".txt");
-        
+    public void setContrasena(String ncontra, File archivo) throws IOException {
+
+        File nuevo = new File(archivo.getAbsolutePath() + ".txt");
         FileWriter w = new FileWriter(nuevo, true);
         BufferedWriter x = new BufferedWriter(w);
         PrintWriter y = new PrintWriter(x);
@@ -65,8 +63,8 @@ public class Menú_principal extends javax.swing.JFrame {
         y.close();
         x.close();
         w.close();
-       archivo.delete();
-       nuevo.renameTo(archivo);
+        archivo.delete();
+        nuevo.renameTo(archivo);
     }
 
     @SuppressWarnings("unchecked")
@@ -94,8 +92,8 @@ public class Menú_principal extends javax.swing.JFrame {
         as2 = new javax.swing.JLabel();
         as3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        pop = new javax.swing.JPopupMenu();
         lab = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         tabbed = new javax.swing.JTabbedPane();
@@ -187,7 +185,7 @@ public class Menú_principal extends javax.swing.JFrame {
                 cambcontraActionPerformed(evt);
             }
         });
-        config.add(cambcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 130, 30));
+        config.add(cambcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 150, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
@@ -223,7 +221,8 @@ public class Menú_principal extends javax.swing.JFrame {
         config.add(as2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 244, 50, 20));
         config.add(as3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 40, 20));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 51, 51));
         jButton1.setText("X");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -233,11 +232,14 @@ public class Menú_principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        config.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, -1));
+        config.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 50, 40));
 
         lab.setText("Stock");
 
+        info.setText("jLabel13");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -536,16 +538,16 @@ public class Menú_principal extends javax.swing.JFrame {
                 if (cnueva.equals(cnueva2)) {
                     if (cact.equals(getContrasena())) {
                         File archivo = new File("pass.txt");
-                        setContrasena(cnueva,archivo); 
+                        setContrasena(cnueva, archivo);
                         JOptionPane.showMessageDialog(null, "La contraseña ha sido cambiada exitosamente");
                     } else {
-                         JOptionPane.showMessageDialog(null,"*La contraseña es incorrecta.");
-                        
+                        JOptionPane.showMessageDialog(null, "*La contraseña es incorrecta.");
+
                         as1.setText("*");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null,"*La nueva contraseña no coincide");
-                   
+                    JOptionPane.showMessageDialog(null, "*La nueva contraseña no coincide");
+
                     as2.setText("*");
                     as3.setText("*");
                 }
@@ -566,7 +568,8 @@ public class Menú_principal extends javax.swing.JFrame {
 
     private void botonstockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseExited
         botonstock.setBackground(new java.awt.Color(232, 190, 168));
-        pop.show();// TODO add your handling code here:
+        botonstock.setToolTipText("Contiene los productos disponibles y permite verlos, agregarlos o eliminarlos");
+
     }//GEN-LAST:event_botonstockMouseExited
 
     private void botonstockMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonstockMouseMoved
@@ -578,7 +581,9 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonstockMouseClicked
 
     private void botonventaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonventaMouseExited
-        botonventa.setBackground(new java.awt.Color(232, 190, 168));        // TODO add your handling code here:
+        botonventa.setBackground(new java.awt.Color(232, 190, 168));
+        botonventa.setToolTipText("Visualización de ventas realizadas");
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonventaMouseExited
 
     private void botonventaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonventaMouseMoved
@@ -596,6 +601,8 @@ public class Menú_principal extends javax.swing.JFrame {
 
     private void clientesbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseExited
         clientesboton.setBackground(new java.awt.Color(232, 190, 168));
+                clientesboton.setToolTipText("Contiene la información relacionada de los clientes");
+//       
     }//GEN-LAST:event_clientesbotonMouseExited
 
     private void clientesbotonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseMoved
@@ -607,7 +614,9 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_encargosbotMouseClicked
 
     private void encargosbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseExited
-        encargosbot.setBackground(new java.awt.Color(232, 190, 168));    // TODO add your handling code here:
+        encargosbot.setBackground(new java.awt.Color(232, 190, 168));  
+         encargosbot.setToolTipText("Permite visualizar los encargos y pedidos realizados");
+//        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseExited
 
     private void encargosbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseMoved
@@ -623,7 +632,9 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajustesbotMouseClicked
 
     private void ajustesbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseExited
-        ajustesbot.setBackground(new java.awt.Color(232, 190, 168)); // TODO add your handling code here:
+        ajustesbot.setBackground(new java.awt.Color(232, 190, 168));
+        
+        ajustesbot.setToolTipText("Permite cambiar la contraseña cuando se desee");// TODO add your handling code here:
     }//GEN-LAST:event_ajustesbotMouseExited
 
     private void ajustesbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseMoved
@@ -632,11 +643,12 @@ public class Menú_principal extends javax.swing.JFrame {
 
     private void provedoresbotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseMoved
         provedoresbot.setBackground(new java.awt.Color(214, 177, 161));
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_provedoresbotMouseMoved
 
     private void provedoresbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseExited
-        provedoresbot.setBackground(new java.awt.Color(232, 190, 168));  // TODO add your handling code here:
+        provedoresbot.setBackground(new java.awt.Color(232, 190, 168));
+        provedoresbot.setToolTipText("Todo lo relacionado con los proveedores de productos");// TODO add your handling code here:
     }//GEN-LAST:event_provedoresbotMouseExited
 
     private void op5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op5ActionPerformed
@@ -653,7 +665,7 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-tabbed.remove(config);        // TODO add your handling code here:
+        tabbed.remove(config);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void eliminar_de_tabbed(javax.swing.JPanel p) {
@@ -730,6 +742,7 @@ tabbed.remove(config);        // TODO add your handling code here:
     private javax.swing.JPanel encargos;
     private javax.swing.JPanel encargosbot;
     private javax.swing.JLabel error;
+    private javax.swing.JLabel info;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -754,7 +767,6 @@ tabbed.remove(config);        // TODO add your handling code here:
     private javax.swing.JPasswordField n2;
     private javax.swing.JPasswordField nueva;
     private javax.swing.JMenuItem op5;
-    private javax.swing.JPopupMenu pop;
     private javax.swing.JPanel provedores;
     private javax.swing.JPanel provedoresbot;
     private javax.swing.JTabbedPane tabbed;
