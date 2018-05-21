@@ -17,6 +17,7 @@ public class add_proveedor extends javax.swing.JDialog {
     public add_proveedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(parent);
     }
 
     public String getNom() {

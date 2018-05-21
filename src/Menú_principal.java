@@ -27,6 +27,10 @@ public class Menú_principal extends javax.swing.JFrame {
 
     procesos archivos = new procesos();
     Stock stock = new Stock(this);
+    Cliente cls = new Cliente(this);
+    Venta Ventas = new Venta(this);
+    Encargo en = new Encargo(this);
+    Proveedor prov = new Proveedor(this);
 
     static String Password;
 
@@ -538,12 +542,12 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonventaMouseMoved
 
     private void botonventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonventaMouseClicked
-        Venta V = new Venta(this);
-        abrir_panel(V, "Ventas");
+        Ventas.pasarclientes(cls);
+        Ventas.pasarstock(stock);
+        abrir_panel(Ventas, "Ventas");
     }//GEN-LAST:event_botonventaMouseClicked
 
     private void clientesbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseClicked
-        Cliente cls = new Cliente(this);
         abrir_panel(cls, "Clientes");        
     }//GEN-LAST:event_clientesbotonMouseClicked
 
@@ -558,7 +562,6 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_clientesbotonMouseMoved
 
     private void encargosbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseClicked
-        Encargo en = new Encargo(this);
         abrir_panel(en, "Encargos");        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseClicked
 
@@ -573,7 +576,6 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_encargosbotMouseMoved
 
     private void provedoresbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseClicked
-        Proveedor prov = new Proveedor(this);
         abrir_panel(prov, "Proveedores");        
     }//GEN-LAST:event_provedoresbotMouseClicked
 

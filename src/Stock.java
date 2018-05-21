@@ -79,11 +79,11 @@ public class Stock extends javax.swing.JPanel {
                 jLabel5Salir(evt);
             }
         });
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 30, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, -3, 30, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("S      T      O     C      K");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 280, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 280, 30));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -107,7 +107,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel9.setText(" VER TODOS LOS PRODUCTOS EN STOCK");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 220, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 220, 50));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 220, 50));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -131,7 +131,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel3.setText("AGREGAR NUEVA SUBCATEGORIA");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 230, 50));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 230, 50));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -155,7 +155,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel4.setText("AGREGAR UN NUEVO  PRODUCTO");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 220, 50));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 220, 50));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,7 +179,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel2.setText("AGREGAR NUEVA CATEGORIA");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 200, 50));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 200, 50));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -203,11 +203,11 @@ public class Stock extends javax.swing.JPanel {
         jLabel7.setText(" ELIMINAR PRODUCTOS DEL STOCK");
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 30));
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 200, 50));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 200, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel1.setToolTipText("");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -200, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, -200, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 255));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,7 +231,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel8.setText("VER PRODUCTOS POR CATEGORIA");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 230, 50));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 230, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel5Salir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5Salir
@@ -241,8 +241,13 @@ public class Stock extends javax.swing.JPanel {
     private void add_categoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_categoria
         categoria add = new categoria(Menú, true);
         add.setVisible(true);
+        if(add.getNombre()!= null){
         Stocklist.add_nodoprincipal(add.getNombre());
         Stocklist.print();
+        }else{
+            System.out.println("Usuario ha cancelado el proceso add_categoria");
+        }
+        
     }//GEN-LAST:event_add_categoria
 
     private void add_subcategoria(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_subcategoria
@@ -250,8 +255,12 @@ public class Stock extends javax.swing.JPanel {
         this.cargar_jcombobox();
         add.add_combocat(Combo_Categorias);
         add.setVisible(true);
+         if(add.getNombre()!= null){
         Stocklist.add_sublista(add.getCategoria(), add.getNombre());
-        Stocklist.print();        
+        Stocklist.print();       
+         }else{
+             System.out.println("El usuario ha cancelado el proceso:add_subcategoría");
+         }
     }//GEN-LAST:event_add_subcategoria
 
     private void add_producto(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_producto

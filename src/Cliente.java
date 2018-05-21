@@ -31,6 +31,15 @@ public class Cliente extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(153, 153, 255));
     }
 
+    public ListaSimple getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ListaSimple clientes) {
+        this.clientes = clientes;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

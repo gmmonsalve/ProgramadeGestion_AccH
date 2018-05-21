@@ -14,6 +14,9 @@ import listas.*;
 public class Venta extends javax.swing.JPanel {
     Menú_principal Menú;
     ListaSimple ventas = new ListaSimple();
+    Cliente clientes;
+    Stock stock;
+    
     /**
      * Creates new form Venta
      */
@@ -154,7 +157,7 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void Realizar_Nueva_Venta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_Nueva_Venta
-        hacer_venta venta = new hacer_venta(Menú, true);
+        hacer_venta venta = new hacer_venta(Menú, true, clientes.getClientes(), stock.getStocklist());
         venta.setVisible(true);
         ventas.agregaralfinal(venta);
     }//GEN-LAST:event_Realizar_Nueva_Venta
@@ -175,6 +178,13 @@ public class Venta extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_jPanel5MouseExited
 
+    public void pasarclientes(Cliente cls) {
+        this.clientes = cls;
+    }
+
+    public void pasarstock(Stock stocki) {
+        this.stock = stocki;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -185,4 +195,5 @@ public class Venta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
+
 }
