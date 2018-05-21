@@ -18,9 +18,8 @@ public class Add_cliente extends javax.swing.JDialog {
     public Add_cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(parent);
+        
     }
-
 
     public String getNom() {
         return nom;
@@ -58,12 +57,9 @@ public class Add_cliente extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
@@ -72,35 +68,17 @@ public class Add_cliente extends javax.swing.JDialog {
         tel = new javax.swing.JTextField();
         no = new javax.swing.JTextField();
         correo = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Digite el nombre: ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("aceptar");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 70, 20));
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("cancelar");
-        jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2cancelar(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 80, 20));
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 255));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
@@ -113,15 +91,6 @@ public class Add_cliente extends javax.swing.JDialog {
         jSeparator2.setBackground(new java.awt.Color(204, 204, 255));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 210, -1));
-
-        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Correo Electrónico");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Digite Dirección de correo ");
@@ -139,7 +108,7 @@ public class Add_cliente extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Agregar Cliente");
+        jLabel2.setText("AGREGAR CLIENTE");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,17 +117,17 @@ public class Add_cliente extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 400, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, 400, 40));
 
         tel.setBorder(null);
         jPanel1.add(tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 210, 20));
@@ -169,7 +138,38 @@ public class Add_cliente extends javax.swing.JDialog {
         correo.setBorder(null);
         jPanel1.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 210, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 360));
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Correo Electrónico");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 200, -1));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setText("Aceptar");
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 80, 30));
+
+        jButton2.setBackground(new java.awt.Color(204, 204, 255));
+        jButton2.setText("Cancelar");
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2cancelar(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,7 +184,7 @@ public class Add_cliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setNom(no.getText());
+        this.setNom(tel.getText());
         this.setCorreo(correo.getText());
         this.setTelefono(tel.getText());
         this.dispose();

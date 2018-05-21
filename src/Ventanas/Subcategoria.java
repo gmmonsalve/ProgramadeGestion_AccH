@@ -75,10 +75,13 @@ public class Subcategoria extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         comboCategorias = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(244, 249, 247));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
@@ -109,6 +112,7 @@ public class Subcategoria extends javax.swing.JDialog {
         nom.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         nom.setForeground(new java.awt.Color(153, 153, 153));
         nom.setText("Digite el nombre de la subcategoría");
+        nom.setBorder(null);
         nom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nomMouseClicked(evt);
@@ -119,37 +123,32 @@ public class Subcategoria extends javax.swing.JDialog {
                 nomActionPerformed(evt);
             }
         });
-        jPanel1.add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 220, -1));
+        jPanel1.add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 220, 20));
 
-        jButton1.setText("aceptar");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 80, 30));
 
         comboCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoría" }));
         jPanel1.add(comboCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 220, -1));
 
-        jButton2.setText("cancelar");
+        jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2cancelar(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 80, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jSeparator1.setBackground(new java.awt.Color(153, 153, 255));
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 220, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,6 +169,7 @@ public class Subcategoria extends javax.swing.JDialog {
             nom.setText("");
             cambiarFuente(nom);
         }
+        nom.setToolTipText("Digite el nombre de la subcategoría");
     }//GEN-LAST:event_nomMouseClicked
 
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
@@ -231,6 +231,7 @@ public class Subcategoria extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nom;
     // End of variables declaration//GEN-END:variables
 }

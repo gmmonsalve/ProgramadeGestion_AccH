@@ -35,6 +35,7 @@ public class Producto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nproducto = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         combocat = new javax.swing.JComboBox<>();
         combosubcat = new javax.swing.JComboBox<>();
@@ -44,12 +45,29 @@ public class Producto extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         precio_producto = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        nproducto.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        nproducto.setForeground(new java.awt.Color(153, 153, 153));
+        nproducto.setText("Digite el nombre del producto");
+        nproducto.setBorder(null);
+        nproducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nproductoMouseClicked(evt);
+            }
+        });
+        nproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nproductoActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(244, 249, 247));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         combocat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Categoría" }));
@@ -67,12 +85,13 @@ public class Producto extends javax.swing.JDialog {
         ref.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         ref.setForeground(new java.awt.Color(153, 153, 153));
         ref.setText("Digite la referencia del producto");
+        ref.setBorder(null);
         ref.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 refMouseClicked(evt);
             }
         });
-        jPanel3.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 260, -1));
+        jPanel3.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 260, 20));
 
         jButton2.setText("cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +112,7 @@ public class Producto extends javax.swing.JDialog {
         precio_producto.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         precio_producto.setForeground(new java.awt.Color(153, 153, 153));
         precio_producto.setText("Digite el  valor  de venta del producto");
+        precio_producto.setBorder(null);
         precio_producto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 precio_productoMouseClicked(evt);
@@ -103,7 +123,15 @@ public class Producto extends javax.swing.JDialog {
                 precio_productoActionPerformed(evt);
             }
         });
-        jPanel3.add(precio_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 260, -1));
+        jPanel3.add(precio_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 260, 20));
+
+        jSeparator1.setBackground(new java.awt.Color(153, 153, 255));
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 255));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 260, 20));
+
+        jSeparator2.setBackground(new java.awt.Color(153, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 255));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 260, 20));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -274,15 +302,6 @@ public class Producto extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_aceptar
 
-    private void refMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refMouseClicked
-        if(ref.getText().equals(l)){
-            ref.setText("");
-            cambiarFuente(ref);
-            fuente(precio_producto);
-        }
-
-    }//GEN-LAST:event_refMouseClicked
-
     private void precio_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precio_productoMouseClicked
         if(precio_producto.getText().equals(k)){
             precio_producto.setText("");
@@ -295,6 +314,26 @@ public class Producto extends javax.swing.JDialog {
     private void precio_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precio_productoActionPerformed
 
     }//GEN-LAST:event_precio_productoActionPerformed
+
+    private void nproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nproductoMouseClicked
+        if(nproducto.getText().equals(k)){
+            nproducto.setText("");
+            cambiarFuente(nproducto);
+            fuente(ref);
+        }
+    }//GEN-LAST:event_nproductoMouseClicked
+
+    private void nproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nproductoActionPerformed
+
+    }//GEN-LAST:event_nproductoActionPerformed
+
+    private void refMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refMouseClicked
+        if(ref.getText().equals(l)){
+            ref.setText("");
+            cambiarFuente(ref);
+            fuente(nproducto);
+        }
+    }//GEN-LAST:event_refMouseClicked
 
     /**
      * @param args the command line arguments
@@ -349,6 +388,9 @@ public class Producto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField nproducto;
     private javax.swing.JTextField precio_producto;
     private javax.swing.JTextField ref;
     // End of variables declaration//GEN-END:variables

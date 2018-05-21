@@ -37,10 +37,13 @@ public class EliminarProducto extends javax.swing.JDialog {
         combosubcat = new javax.swing.JComboBox<>();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(244, 249, 247));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -65,9 +68,12 @@ public class EliminarProducto extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         nom_prod1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         nom_prod1.setForeground(new java.awt.Color(153, 153, 153));
         nom_prod1.setText("Digite el nombre del producto");
+        nom_prod1.setBorder(null);
         nom_prod1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nom_prod1MouseClicked(evt);
@@ -78,8 +84,10 @@ public class EliminarProducto extends javax.swing.JDialog {
                 nom_prod1ActionPerformed(evt);
             }
         });
+        jPanel2.add(nom_prod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 260, 20));
 
         combocat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione categoría" }));
+        jPanel2.add(combocat, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 65, 257, -1));
 
         combosubcat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Subcategoría" }));
         combosubcat.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +95,7 @@ public class EliminarProducto extends javax.swing.JDialog {
                 combosubcatActionPerformed(evt);
             }
         });
+        jPanel2.add(combosubcat, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 115, 257, -1));
 
         jButton9.setText("Aceptar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +103,7 @@ public class EliminarProducto extends javax.swing.JDialog {
                 aceptar(evt);
             }
         });
+        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 222, 80, -1));
 
         jButton10.setText("Cancelar");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -101,44 +111,11 @@ public class EliminarProducto extends javax.swing.JDialog {
                 cancelar(evt);
             }
         });
+        jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 222, 86, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(combosubcat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(combocat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nom_prod1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addGap(18, 18, 18)
-                .addComponent(jButton10)
-                .addGap(22, 22, 22))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(combocat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(combosubcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(nom_prod1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
-                .addGap(20, 20, 20))
-        );
+        jSeparator1.setBackground(new java.awt.Color(153, 153, 255));
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 255));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 260, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,7 +125,7 @@ public class EliminarProducto extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,6 +229,7 @@ public class EliminarProducto extends javax.swing.JDialog {
             nom_prod1.setText("");
             cambiarFuente(nom_prod1);
         }
+        nom_prod1.setToolTipText("Digite el nombre del producto");
     }//GEN-LAST:event_nom_prod1MouseClicked
 
     private void nom_prod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_prod1ActionPerformed
@@ -313,6 +291,7 @@ public class EliminarProducto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nom_prod1;
     // End of variables declaration//GEN-END:variables
 }
