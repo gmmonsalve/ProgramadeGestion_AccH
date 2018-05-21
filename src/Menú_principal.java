@@ -90,6 +90,7 @@ public class Menú_principal extends javax.swing.JFrame {
         as2 = new javax.swing.JLabel();
         as3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         lab = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -151,7 +152,7 @@ public class Menú_principal extends javax.swing.JFrame {
         config.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 110, 20));
         config.add(n2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, -1));
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -176,7 +177,10 @@ public class Menú_principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        config.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 50, 40));
+        config.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, -10, 50, 40));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
+        config.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 600, 470));
 
         lab.setText("Stock");
 
@@ -714,6 +718,7 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
