@@ -5,12 +5,21 @@
  */
 package Ventanas;
 
+import Archivos.procesos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LUIS POTTE
  */
 public class add_proveedor extends javax.swing.JDialog {
+
     private String nom, Telefono, Correo = "";
+    procesos p = new procesos();
+
     /**
      * Creates new form add_proveedor
      */
@@ -43,8 +52,6 @@ public class add_proveedor extends javax.swing.JDialog {
     public void setCorreo(String Correo) {
         this.Correo = Correo;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,7 +110,7 @@ public class add_proveedor extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 400, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 30));
 
         tel.setBorder(null);
         tel.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +139,7 @@ public class add_proveedor extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 70, 20));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 70, 20));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setText("cancelar");
@@ -143,7 +150,7 @@ public class add_proveedor extends javax.swing.JDialog {
                 jButton2cancelar(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 80, 20));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 80, 20));
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 255));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 255));
@@ -164,7 +171,7 @@ public class add_proveedor extends javax.swing.JDialog {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Digite Dirección de correo ");
@@ -194,10 +201,26 @@ public class add_proveedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setNom(no.getText());
-        this.setCorreo(correo.getText());
-        this.setTelefono(tel.getText());
-        this.dispose();
+        if (!no.getText().isEmpty() & !tel.getText().isEmpty()) {
+            this.setNom(no.getText());
+            this.setTelefono(tel.getText());
+            if(!correo.getText().isEmpty()){
+            this.setCorreo(correo.getText());
+            }else{
+            this.setCorreo("not");
+            }
+            String reg = nom+";"+Telefono+";"+Correo;
+            try {
+                p.add_registro("proveedores", reg );
+            } catch (IOException ex) {
+                System.out.println("Error al cargar el archivo.");
+            }
+            JOptionPane.showMessageDialog(null, "Se ha añadido el proveedor satisfactoriamente.");
+
+        }else{
+         JOptionPane.showMessageDialog(null, "Por favor, llene los campos correspondientes","Error",JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cancelar
