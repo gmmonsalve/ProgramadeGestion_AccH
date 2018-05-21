@@ -116,7 +116,7 @@ public class hacer_venta extends javax.swing.JDialog {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jButton2.setText("Añadir producto a la venta");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 170, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 170, 20));
 
         jLabel5.setText("Referencia del pruducto");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
@@ -144,7 +144,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton3cancelar(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, 30));
 
         jButton9.setText("Aceptar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton9aceptar(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, 30));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -86,10 +86,10 @@ public class Cliente extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addGap(38, 38, 38))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +99,7 @@ public class Cliente extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 220, 50));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 220, 50));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
@@ -114,7 +114,7 @@ public class Cliente extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("C   L   I   E   N   T   E   S ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 280, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 280, 30));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,11 +153,11 @@ public class Cliente extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 220, 50));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 220, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel10.setToolTipText("");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -200, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -190, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 255));
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -183,10 +183,10 @@ public class Cliente extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel4)
-                .addGap(33, 33, 33))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +196,7 @@ public class Cliente extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseMoved

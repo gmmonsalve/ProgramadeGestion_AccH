@@ -48,7 +48,7 @@ public class ListaSimple extends Lista{
                 }
             } catch (NullPointerException e) {
                 // controla que cuando p apunte a nulo no se detenga
-                System.out.println("El elemento no exixte en la lista");
+                System.out.println("El elemento no existe en la lista");
             }
         }
     }

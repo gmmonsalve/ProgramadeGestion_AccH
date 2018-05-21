@@ -87,7 +87,7 @@ public class Proveedor extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 220, 50));
+        add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 220, 50));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 51, 51));
@@ -102,7 +102,7 @@ public class Proveedor extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("P   R   O   V   E   D   O   R   E   S ");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 370, 30));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 370, 30));
 
         ver.setBackground(new java.awt.Color(204, 204, 255));
         ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,7 +141,7 @@ public class Proveedor extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 220, 50));
+        add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 220, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel12.setToolTipText("");

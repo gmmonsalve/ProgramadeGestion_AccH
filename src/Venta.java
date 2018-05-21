@@ -87,7 +87,7 @@ public class Venta extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 220, 50));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 220, 50));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
@@ -102,7 +102,7 @@ public class Venta extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("V   E   N   T   A   S ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 220, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 220, 30));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,7 +141,7 @@ public class Venta extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 220, 50));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 220, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel10.setToolTipText("");
