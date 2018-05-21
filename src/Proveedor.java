@@ -9,12 +9,19 @@
  * @author LUIS POTTE
  */
 public class Proveedor extends javax.swing.JPanel {
-
+    Menú_principal Menú;
     /**
      * Creates new form Proveedor
      */
     public Proveedor() {
         initComponents();
+    }
+
+    public Proveedor(Menú_principal men) {
+        initComponents();
+        this.Menú = men;
+        añadir.setBackground(new java.awt.Color(153, 153, 255));
+        ver.setBackground(new java.awt.Color(153, 153, 255));
     }
 
     /**
@@ -26,19 +33,151 @@ public class Proveedor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        añadir = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        ver = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        añadir.setBackground(new java.awt.Color(204, 204, 255));
+        añadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        añadir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                añadirMouseMoved(evt);
+            }
+        });
+        añadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ver_proveedor(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                añadirMouseExited(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Añadir proveedor nuevo");
+
+        javax.swing.GroupLayout añadirLayout = new javax.swing.GroupLayout(añadir);
+        añadir.setLayout(añadirLayout);
+        añadirLayout.setHorizontalGroup(
+            añadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(añadirLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel7)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        añadirLayout.setVerticalGroup(
+            añadirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(añadirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        add(añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 220, 50));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel8.setText("X");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8Salir(evt);
+            }
+        });
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 30, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setText("P   R   O   V   E   D   O   R   E   S ");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 370, 30));
+
+        ver.setBackground(new java.awt.Color(204, 204, 255));
+        ver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                verMouseMoved(evt);
+            }
+        });
+        ver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Ver_proveedores(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                verMouseExited(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Ver Todos los proveedores");
+
+        javax.swing.GroupLayout verLayout = new javax.swing.GroupLayout(ver);
+        ver.setLayout(verLayout);
+        verLayout.setHorizontalGroup(
+            verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel11)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        verLayout.setVerticalGroup(
+            verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        add(ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 220, 50));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
+        jLabel12.setToolTipText("");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(-260, -180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void añadirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirMouseMoved
+        añadir.setBackground(new java.awt.Color(204, 204, 255));
+    }//GEN-LAST:event_añadirMouseMoved
+
+    private void ver_proveedor(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver_proveedor
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ver_proveedor
+
+    private void añadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirMouseExited
+        añadir.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_añadirMouseExited
+
+    private void jLabel8Salir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8Salir
+        Menú.eliminar_de_tabbed(this);
+    }//GEN-LAST:event_jLabel8Salir
+
+    private void verMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_verMouseMoved
+
+    private void Ver_proveedores(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_proveedores
+        ver.setBackground(new java.awt.Color(204, 204, 255));
+    }//GEN-LAST:event_Ver_proveedores
+
+    private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited
+        ver.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_verMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel añadir;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel ver;
     // End of variables declaration//GEN-END:variables
 }

@@ -70,11 +70,6 @@ public class Menú_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton5 = new javax.swing.JButton();
-        ventas = new javax.swing.JPanel();
-        clientes = new javax.swing.JPanel();
-        encargos = new javax.swing.JPanel();
-        provedores = new javax.swing.JPanel();
         config = new javax.swing.JPanel();
         act = new javax.swing.JPasswordField();
         nueva = new javax.swing.JPasswordField();
@@ -116,60 +111,6 @@ public class Menú_principal extends javax.swing.JFrame {
         op5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        jButton5.setText("jButton1");
-
-        ventas.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout ventasLayout = new javax.swing.GroupLayout(ventas);
-        ventas.setLayout(ventasLayout);
-        ventasLayout.setHorizontalGroup(
-            ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        ventasLayout.setVerticalGroup(
-            ventasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        clientes.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout clientesLayout = new javax.swing.GroupLayout(clientes);
-        clientes.setLayout(clientesLayout);
-        clientesLayout.setHorizontalGroup(
-            clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        clientesLayout.setVerticalGroup(
-            clientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        encargos.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout encargosLayout = new javax.swing.GroupLayout(encargos);
-        encargos.setLayout(encargosLayout);
-        encargosLayout.setHorizontalGroup(
-            encargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        encargosLayout.setVerticalGroup(
-            encargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        provedores.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout provedoresLayout = new javax.swing.GroupLayout(provedores);
-        provedores.setLayout(provedoresLayout);
-        provedoresLayout.setHorizontalGroup(
-            provedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        provedoresLayout.setVerticalGroup(
-            provedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         config.setBackground(new java.awt.Color(255, 255, 255));
         config.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         config.add(act, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 197, -1));
@@ -206,7 +147,7 @@ public class Menú_principal extends javax.swing.JFrame {
         config.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 110, 20));
         config.add(n2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 200, -1));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(102, 102, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -239,10 +180,8 @@ public class Menú_principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 516, 176, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -494,8 +433,6 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jPanel2.add(tabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 510));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jMenuBar1.setBackground(new java.awt.Color(255, 204, 153));
         jMenuBar1.setForeground(new java.awt.Color(255, 204, 153));
 
@@ -523,6 +460,17 @@ public class Menú_principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -595,7 +543,8 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonventaMouseClicked
 
     private void clientesbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseClicked
-        abrir_panel(clientes, "Clientes");        // TODO add your handling code here:
+        Cliente cls = new Cliente(this);
+        abrir_panel(cls, "Clientes");        
     }//GEN-LAST:event_clientesbotonMouseClicked
 
     private void clientesbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseExited
@@ -609,7 +558,8 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_clientesbotonMouseMoved
 
     private void encargosbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseClicked
-        abrir_panel(encargos, "Encargos");        // TODO add your handling code here:
+        Encargo en = new Encargo(this);
+        abrir_panel(en, "Encargos");        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseClicked
 
     private void encargosbotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseExited
@@ -623,7 +573,8 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_encargosbotMouseMoved
 
     private void provedoresbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseClicked
-        abrir_panel(provedores, "Proveedores");        // TODO add your handling code here:
+        Proveedor prov = new Proveedor(this);
+        abrir_panel(prov, "Proveedores");        
     }//GEN-LAST:event_provedoresbotMouseClicked
 
     private void ajustesbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseClicked
@@ -735,15 +686,12 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JPanel botonstock;
     private javax.swing.JPanel botonventa;
     private javax.swing.JButton cambcontra;
-    private javax.swing.JPanel clientes;
     private javax.swing.JPanel clientesboton;
     private javax.swing.JPanel config;
-    private javax.swing.JPanel encargos;
     private javax.swing.JPanel encargosbot;
     private javax.swing.JLabel error;
     private javax.swing.JLabel info;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -766,10 +714,8 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField n2;
     private javax.swing.JPasswordField nueva;
     private javax.swing.JMenuItem op5;
-    private javax.swing.JPanel provedores;
     private javax.swing.JPanel provedoresbot;
     private javax.swing.JTabbedPane tabbed;
-    private javax.swing.JPanel ventas;
     // End of variables declaration//GEN-END:variables
 
 }

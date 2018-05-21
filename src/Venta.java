@@ -19,6 +19,8 @@ public class Venta extends javax.swing.JPanel {
     public Venta (Menú_principal Men){
         initComponents();
         this.Menú = Men;
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel5.setBackground(new java.awt.Color(153, 153, 255));
     }
 
     /**
@@ -164,7 +166,7 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_Ver_Ventas
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel5.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_jPanel5MouseExited
 
 
