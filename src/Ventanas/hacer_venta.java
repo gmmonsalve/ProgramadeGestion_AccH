@@ -6,6 +6,7 @@
 package Ventanas;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import listas.ListaSimple;
 import listas.Multilista;
 
@@ -14,24 +15,87 @@ import listas.Multilista;
  * @author LUIS POTTE
  */
 public class hacer_venta extends javax.swing.JDialog {
-    ListaSimple cls;
-    Multilista stock;
+
+    ListaSimple productos = new ListaSimple();
+    int noVenta;
+    String valor_venta, nomcliente;
+
     /**
      * Creates new form hacer_venta
      */
+    public hacer_venta(java.awt.Frame parent, boolean modal, int id) {
+        super(parent, modal);
+        initComponents();
+        this.noVenta = id;
+        this.id.setText(String.valueOf(id));
+        this.setLocationRelativeTo(parent);
+    }
+    
     public hacer_venta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(parent);
     }
 
-    public hacer_venta(java.awt.Frame Menú, boolean b, ListaSimple clientes, Multilista stocklist) {
-        super(Menú, b);
-        initComponents();
-        this.setLocationRelativeTo(Menú);
-        this.cls = clientes;
-        this.stock = stocklist;
+    public ListaSimple getProductos() {
+        return productos;
     }
 
+    public void setProductos(ListaSimple productos) {
+        this.productos = productos;
+    }
+
+    public int getNoVenta() {
+        return noVenta;
+    }
+
+    public void setNoVenta(int noVenta) {
+        this.noVenta = noVenta;
+    }
+
+    public String getValor_venta() {
+        return valor_venta;
+    }
+
+    public void setValor_venta(String valor_venta) {
+        this.valor_venta = valor_venta;
+    }
+
+    public String getNomcliente() {
+        return nomcliente;
+    }
+
+    public void setNomcliente(String nomcliente) {
+        this.nomcliente = nomcliente;
+    }
+
+    public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
+        for (int i = 0; i < jcbx.getItemCount(); i++) {
+            boolean sw = true;
+            for (int j = 0; j < combo_cls.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(combo_cls.getItemAt(j))) {
+                    sw = false;
+                }
+            }
+            if (sw == true) {
+                this.combo_cls.addItem(jcbx.getItemAt(i));
+            }
+        }
+    }
+
+    public void add_comboprodctos(javax.swing.JComboBox<String> jcbx) {
+        for (int i = 0; i < jcbx.getItemCount(); i++) {
+            boolean sw = true;
+            for (int j = 0; j < combo_prod.getItemCount(); j++) {
+                if (jcbx.getItemAt(i).equals(combo_prod.getItemAt(j))) {
+                    sw = false;
+                }
+            }
+            if (sw == true) {
+                this.combo_prod.addItem(jcbx.getItemAt(i));
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +120,7 @@ public class hacer_venta extends javax.swing.JDialog {
         combo_cls = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         cant = new javax.swing.JSpinner();
-        jTextField3 = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -71,7 +135,7 @@ public class hacer_venta extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Referencia", "Categoria", "SubCategoria", "Precio", "Cantidad "
+                "Cantidad ", "Referencia", "Valor unitario", "Valor total"
             }
         ));
         jScrollPane1.setViewportView(TablaInfo);
@@ -116,7 +180,12 @@ public class hacer_venta extends javax.swing.JDialog {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jButton2.setText("Añadir producto a la venta");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 170, 20));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 170, -1));
 
         jLabel5.setText("Referencia del pruducto");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
@@ -131,8 +200,11 @@ public class hacer_venta extends javax.swing.JDialog {
         cant.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 200, 20));
 
-        jTextField3.setBorder(null);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 200, -1));
+        id.setEditable(false);
+        id.setBackground(new java.awt.Color(255, 255, 255));
+        id.setForeground(new java.awt.Color(255, 0, 0));
+        id.setBorder(null);
+        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 200, -1));
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 255));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 255));
@@ -144,7 +216,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton3cancelar(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, 30));
 
         jButton9.setText("Aceptar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +224,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton9aceptar(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, -1, 30));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,15 +242,24 @@ public class hacer_venta extends javax.swing.JDialog {
 
     private void jButton3cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3cancelar
         int op = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cancelar el proceso?", "Alerta!", JOptionPane.YES_NO_OPTION);
-        if (op == 0){
+        if (op == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton3cancelar
 
     private void jButton9aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9aceptar
-
+        this.setProductos(productos);
+        this.setNomcliente(combo_cls.getSelectedItem().toString());
+        this.setValor_venta("cero");
         this.dispose();
     }//GEN-LAST:event_jButton9aceptar
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // añadir prouctos a la tabla
+//        productos.agregaralfinal(combo_prod.getSelectedItem().toString());
+        DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
+        Tabla.addRow(new Object[]{cant.getValue(),combo_prod.getSelectedItem(),0,0});
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +308,7 @@ public class hacer_venta extends javax.swing.JDialog {
     private javax.swing.JSpinner cant;
     private javax.swing.JComboBox<String> combo_cls;
     private javax.swing.JComboBox<String> combo_prod;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton9;
@@ -240,6 +322,5 @@ public class hacer_venta extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,12 +5,6 @@
  */
 package Ventanas;
 
-import java.io.File;
-import Archivos.procesos;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 /**
  *
  * @author LUIS POTTE
@@ -18,14 +12,13 @@ import javax.swing.JOptionPane;
 public class Add_cliente extends javax.swing.JDialog {
     
     private String nom, Correo, Telefono;
-    procesos p = new procesos();
     /**
      * Creates new form Add_cliente
      */
     public Add_cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        
     }
 
     public String getNom() {
@@ -188,28 +181,13 @@ public class Add_cliente extends javax.swing.JDialog {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         jLabel4.setEnabled(true);
         correo.setEnabled(true);
-      
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!tel.getText().isEmpty() & !tel.getText().isEmpty() ){
         this.setNom(no.getText());
-        this.setTelefono(tel.getText());
-        if(correo.getText()!=null){
         this.setCorreo(correo.getText());
-        }else{
-        this.setCorreo("not");
-        }
-        JOptionPane.showMessageDialog(null,"Se ha añadido exitosamente al cliente");
-        }else{
-         JOptionPane.showMessageDialog(null,"Por favor, digite los campos correspondientes", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        String reg = nom+";"+Telefono+";"+Correo;
-        try {
-            p.add_registro("clientes", reg);
-        } catch (IOException ex) {
-            Logger.getLogger(Add_cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.setTelefono(tel.getText());
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -1,31 +1,37 @@
 
+import Ventanas.Add_cliente;
+import Ventanas.Producto;
 import Ventanas.hacer_venta;
 import listas.*;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author LUIS POTTE
  */
 public class Venta extends javax.swing.JPanel {
+
     Menú_principal Menú;
     ListaSimple ventas = new ListaSimple();
     Cliente clientes;
     Stock stock;
-    
+    int cant_ventas;
+
     /**
      * Creates new form Venta
      */
     public Venta() {
         initComponents();
     }
-    public Venta (Menú_principal Men){
+
+    public Venta(Menú_principal Men) {
         initComponents();
         this.Menú = Men;
+        this.cant_ventas = 0;
         jPanel4.setBackground(new java.awt.Color(153, 153, 255));
         jPanel5.setBackground(new java.awt.Color(153, 153, 255));
     }
@@ -39,6 +45,8 @@ public class Venta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        comboProd = new javax.swing.JComboBox<>();
+        combocls = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -87,7 +95,7 @@ public class Venta extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 220, 50));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 220, 50));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
@@ -102,7 +110,7 @@ public class Venta extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("V   E   N   T   A   S ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 220, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 220, 30));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,7 +149,7 @@ public class Venta extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 220, 50));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 220, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32306402.png"))); // NOI18N
         jLabel10.setToolTipText("");
@@ -153,17 +161,22 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_Salir
 
     private void jPanel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseMoved
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));        
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void Realizar_Nueva_Venta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_Nueva_Venta
-        hacer_venta venta = new hacer_venta(Menú, true, clientes.getClientes(), stock.getStocklist());
+        this.cant_ventas++;
+        hacer_venta venta = new hacer_venta(Menú, true, this.cant_ventas);
+        this.cargar_combobox_cls();
+        this.cargar_jcombobox_stock();
+        venta.add_comboclientes(combocls);
+        venta.add_comboprodctos(comboProd);
         venta.setVisible(true);
         ventas.agregaralfinal(venta);
     }//GEN-LAST:event_Realizar_Nueva_Venta
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new java.awt.Color(153, 153, 255));  
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseMoved
@@ -171,7 +184,7 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel5MouseMoved
 
     private void Ver_Ventas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_Ventas
-        
+
     }//GEN-LAST:event_Ver_Ventas
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
@@ -186,7 +199,35 @@ public class Venta extends javax.swing.JPanel {
         this.stock = stocki;
     }
 
+    public void cargar_jcombobox_stock() {
+        NodoPrincipal p = stock.getStocklist().getInicioMulti();
+        while (p != null) {
+            NodoSegundario q = p.getNodos().getInicio();
+            while (q != null) {
+                NodoSegundario u = (NodoSegundario) q.getInfo();
+                u = u.getSiguiente();
+                while (u != null) {
+                    Producto info = (Producto) u.getInfo();
+                    comboProd.addItem(info.getReferencia());
+                    u = u.getSiguiente();
+                }
+                q = q.getSiguiente();
+            }
+            p = p.getSiguiente();
+        }
+    }
+
+    public void cargar_combobox_cls() {
+        NodoSegundario p = clientes.getClientes().getInicio();
+        while (p != null) {
+            Add_cliente info = (Add_cliente)p.getInfo();
+            combocls.addItem(info.getNom());
+            p = p.getSiguiente();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboProd;
+    private javax.swing.JComboBox<String> combocls;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
