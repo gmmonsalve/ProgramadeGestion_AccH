@@ -113,7 +113,7 @@ public class Menú_principal extends javax.swing.JFrame {
         Cerrar = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         op5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        ayuda = new javax.swing.JMenu();
 
         config.setBackground(new java.awt.Color(255, 255, 255));
         config.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -460,8 +460,13 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Cerrar);
 
-        jMenu2.setText("Ayuda");
-        jMenuBar1.add(jMenu2);
+        ayuda.setText("Ayuda");
+        ayuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ayudaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(ayuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -548,7 +553,7 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonventaMouseClicked
 
     private void clientesbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseClicked
-        abrir_panel(cls, "Clientes");        
+        abrir_panel(cls, "Clientes");
     }//GEN-LAST:event_clientesbotonMouseClicked
 
     private void clientesbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesbotonMouseExited
@@ -576,7 +581,7 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_encargosbotMouseMoved
 
     private void provedoresbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresbotMouseClicked
-        abrir_panel(prov, "Proveedores");        
+        abrir_panel(prov, "Proveedores");
     }//GEN-LAST:event_provedoresbotMouseClicked
 
     private void ajustesbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesbotMouseClicked
@@ -619,6 +624,16 @@ public class Menú_principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tabbed.remove(config);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ayudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ayudaMouseClicked
+        try {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "manualusuario.pdf");
+            System.out.println("Abriendo pdf...");
+        } catch (IOException e) {
+// TODO Auto-generated catch block
+            JOptionPane.showMessageDialog(null,"No se pudo abrir el manual de usuario");
+        }   // TODO add your handling code here:
+    }//GEN-LAST:event_ayudaMouseClicked
 
     public void eliminar_de_tabbed(javax.swing.JPanel p) {
         tabbed.remove(p);
@@ -685,6 +700,7 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JLabel as1;
     private javax.swing.JLabel as2;
     private javax.swing.JLabel as3;
+    private javax.swing.JMenu ayuda;
     private javax.swing.JPanel botonstock;
     private javax.swing.JPanel botonventa;
     private javax.swing.JButton cambcontra;
@@ -706,7 +722,6 @@ public class Menú_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
