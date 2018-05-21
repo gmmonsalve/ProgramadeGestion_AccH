@@ -1,3 +1,8 @@
+
+import Ventanas.Add_cliente;
+import Ventanas.VerClientes;
+import listas.ListaSimple;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +15,7 @@
  */
 public class Cliente extends javax.swing.JPanel {
     Menú_principal Menú;
+    ListaSimple clientes = new ListaSimple();
     /**
      * Creates new form Cliente
      */
@@ -189,7 +195,9 @@ public class Cliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void añadir_cliente(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadir_cliente
-
+        Add_cliente cls = new Add_cliente(Menú, true);
+        cls.setVisible(true);
+        clientes.agregaralfinal(cls);
     }//GEN-LAST:event_añadir_cliente
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
@@ -205,7 +213,8 @@ public class Cliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel5MouseMoved
 
     private void Ver_clientes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_clientes
-
+        VerClientes ver = new VerClientes(Menú, true, clientes);
+        ver.setVisible(true);
     }//GEN-LAST:event_Ver_clientes
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited

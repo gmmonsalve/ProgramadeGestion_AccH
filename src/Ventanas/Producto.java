@@ -19,7 +19,7 @@ public class Producto extends javax.swing.JDialog {
 
     private String Categoria;
     private String subcategoria;
-    private String nombre;
+    private String precio;
     private int cantidad;
     private String referencia;
 
@@ -43,7 +43,7 @@ public class Producto extends javax.swing.JDialog {
         ref = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        nproducto = new javax.swing.JTextField();
+        precio_producto = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -72,7 +72,7 @@ public class Producto extends javax.swing.JDialog {
                 refMouseClicked(evt);
             }
         });
-        jPanel3.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 260, -1));
+        jPanel3.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 260, -1));
 
         jButton2.setText("cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -90,20 +90,20 @@ public class Producto extends javax.swing.JDialog {
         });
         jPanel3.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
 
-        nproducto.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
-        nproducto.setForeground(new java.awt.Color(153, 153, 153));
-        nproducto.setText("Digite el nombre del producto");
-        nproducto.addMouseListener(new java.awt.event.MouseAdapter() {
+        precio_producto.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        precio_producto.setForeground(new java.awt.Color(153, 153, 153));
+        precio_producto.setText("Digite el  valor  de venta del producto");
+        precio_producto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nproductoMouseClicked(evt);
+                precio_productoMouseClicked(evt);
             }
         });
-        nproducto.addActionListener(new java.awt.event.ActionListener() {
+        precio_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nproductoActionPerformed(evt);
+                precio_productoActionPerformed(evt);
             }
         });
-        jPanel3.add(nproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 260, -1));
+        jPanel3.add(precio_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 260, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -152,7 +152,7 @@ public class Producto extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        k= nproducto.getText();
+        k= precio_producto.getText();
         l= ref.getText();
     }
 
@@ -216,18 +216,19 @@ public class Producto extends javax.swing.JDialog {
         this.referencia = referencia;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPrecio() {
+        return precio;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
+
 
     public boolean verificar_valores() {
         boolean b = true;
         if (this.getCantidad() == 0
-                && this.getNombre() == null
+                && this.getPrecio() == null
                 && combocat.getSelectedItem().equals("-")
                 && combosubcat.getSelectedItem().equals("-")
                 && this.getReferencia() == null) {
@@ -244,7 +245,7 @@ public class Producto extends javax.swing.JDialog {
             if (n.equals(ref)) {
                 n.setText("Digite la referencia del producto");
             } else {
-                if (n.equals(nproducto)) {
+                if (n.equals(precio_producto)) {
                     n.setText("Digite el nombre del producto");
                 }
             }
@@ -266,7 +267,7 @@ public class Producto extends javax.swing.JDialog {
 
     private void aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar
         setCantidad((int) cant.getValue());
-        setNombre(nproducto.getText());
+        setPrecio(precio_producto.getText());
         setCategoria(combocat.getSelectedItem().toString());
         setSubcategoria(combosubcat.getSelectedItem().toString());
         setReferencia(ref.getText());
@@ -277,23 +278,23 @@ public class Producto extends javax.swing.JDialog {
         if(ref.getText().equals(l)){
             ref.setText("");
             cambiarFuente(ref);
-            fuente(nproducto);
+            fuente(precio_producto);
         }
 
     }//GEN-LAST:event_refMouseClicked
 
-    private void nproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nproductoMouseClicked
-        if(nproducto.getText().equals(k)){
-            nproducto.setText("");
-            cambiarFuente(nproducto);
+    private void precio_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precio_productoMouseClicked
+        if(precio_producto.getText().equals(k)){
+            precio_producto.setText("");
+            cambiarFuente(precio_producto);
             fuente(ref);
         }
 
-    }//GEN-LAST:event_nproductoMouseClicked
+    }//GEN-LAST:event_precio_productoMouseClicked
 
-    private void nproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nproductoActionPerformed
+    private void precio_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precio_productoActionPerformed
 
-    }//GEN-LAST:event_nproductoActionPerformed
+    }//GEN-LAST:event_precio_productoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,7 +349,7 @@ public class Producto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField nproducto;
+    private javax.swing.JTextField precio_producto;
     private javax.swing.JTextField ref;
     // End of variables declaration//GEN-END:variables
 }

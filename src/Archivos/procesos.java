@@ -118,16 +118,16 @@ public class procesos {
             if (s.substring(i, i + 1).equals(",")) {
                 switch (cont) {
                     case 1:
-                        p.setNombre(aux);
-                        break;
-                    case 2:
                         p.setReferencia(aux);
                         break;
-                    case 3:
+                    case 2:
                         p.setSubcategoria(aux);
                         break;
-                    case 4:
+                    case 3:
                         p.setCategoria(aux);
+                        break;
+                    case 4:
+                        p.setPrecio(aux);
                         break;
                     case 5:
                         p.setCantidad(Integer.parseInt(aux));
@@ -143,10 +143,10 @@ public class procesos {
     }
 
     private String generar_linea(Producto info) {
-        String s = info.getNombre()
-                + "," + info.getReferencia()
+        String s = info.getReferencia()
                 + "," + info.getSubcategoria()
                 + "," + info.getCategoria()
+                + "," + info.getPrecio()
                 + "," + info.getCantidad()
                 +",";
         return s;

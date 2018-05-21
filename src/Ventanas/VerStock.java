@@ -46,13 +46,13 @@ public class VerStock extends javax.swing.JDialog {
                 while (u != null) {
                     // informacion del producto
                     Producto infoProducto = (Producto) u.getInfo();
-                    tabla.setValueAt(infoProducto.getNombre(), row, column);
+                    tabla.setValueAt(infoProducto.getReferencia(), row, column);
                     column++;
                     tabla.setValueAt(infoProducto.getCategoria(), row, column);
                     column++;
                     tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
                     column++;
-                    tabla.setValueAt(infoProducto.getReferencia(), row, column);
+                    tabla.setValueAt(infoProducto.getPrecio(), row, column);
                     column++;
                     tabla.setValueAt(infoProducto.getCantidad(), row, column);
                     column++;
@@ -117,7 +117,7 @@ public class VerStock extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre del Producto", "Categoria", "SubCategoria", "Referencia", "Cantidad "
+                "Referencia", "Categoria", "SubCategoria", "Precio", "Cantidad "
             }
         ));
         jScrollPane1.setViewportView(TablaInfo);

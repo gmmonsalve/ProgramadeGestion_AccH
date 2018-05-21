@@ -37,7 +37,7 @@ public class VerCategoria extends javax.swing.JDialog {
         try {
             this.modelo();
             this.setVisible(true);
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "El nombre de la categoría " + prod + " no existe, intente de nuevo");
             this.dispose();
         }
@@ -47,8 +47,8 @@ public class VerCategoria extends javax.swing.JDialog {
         return nom_cate;
     }
 
-    public void setNom_cate(JLabel nom_cate) {
-        this.nom_cate = nom_cate;
+    public void setNom_cate(String nom_cate) {
+        this.nom_cate.setText(nom_cate);
     }
 
     /**
@@ -88,7 +88,7 @@ public class VerCategoria extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre del Producto", "Categoria", "SubCategoria", "Referencia", "Cantidad "
+                "Referencia", "Categoria", "SubCategoria", "Precio", "Cantidad "
             }
         ));
         jScrollPane2.setViewportView(TablaInfo);
@@ -140,9 +140,8 @@ public class VerCategoria extends javax.swing.JDialog {
 
     private void mostar_datos(DefaultTableModel tabla, int n, int m) {
         DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
-        System.out.println("Entró a mostraar datos" + NombreDeCategoria);
         NodoPrincipal cats = aux.getNodo(NombreDeCategoria);
-        System.out.println(": " + cats.getInfo());
+        this.setNom_cate(cats.getInfo());
         //imprime todos los productos de las subcategorias que se hicieron en la categoria
         NodoSegundario subnodo = cats.getNodos().getInicio();
         while (subnodo != null) {
@@ -152,13 +151,13 @@ public class VerCategoria extends javax.swing.JDialog {
             while (u != null) {
                 // informacion del producto
                 Producto infoProducto = (Producto) u.getInfo();
-                tabla.setValueAt(infoProducto.getNombre(), row, column);
+                tabla.setValueAt(infoProducto.getReferencia(), row, column);
                 column++;
                 tabla.setValueAt(infoProducto.getCategoria(), row, column);
                 column++;
                 tabla.setValueAt(infoProducto.getSubcategoria(), row, column);
                 column++;
-                tabla.setValueAt(infoProducto.getReferencia(), row, column);
+                tabla.setValueAt(infoProducto.getPrecio(), row, column);
                 column++;
                 tabla.setValueAt(infoProducto.getCantidad(), row, column);
                 column++;

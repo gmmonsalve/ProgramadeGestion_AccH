@@ -1,3 +1,6 @@
+
+import Ventanas.hacer_venta;
+import listas.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +13,7 @@
  */
 public class Venta extends javax.swing.JPanel {
     Menú_principal Menú;
+    ListaSimple ventas = new ListaSimple();
     /**
      * Creates new form Venta
      */
@@ -150,7 +154,9 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel4MouseMoved
 
     private void Realizar_Nueva_Venta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_Nueva_Venta
-        
+        hacer_venta venta = new hacer_venta(Menú, true);
+        venta.setVisible(true);
+        ventas.agregaralfinal(venta);
     }//GEN-LAST:event_Realizar_Nueva_Venta
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited

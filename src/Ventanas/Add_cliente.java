@@ -18,7 +18,9 @@ public class Add_cliente extends javax.swing.JDialog {
     public Add_cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(parent);
     }
+
 
     public String getNom() {
         return nom;
@@ -182,7 +184,7 @@ public class Add_cliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setNom(tel.getText());
+        this.setNom(no.getText());
         this.setCorreo(correo.getText());
         this.setTelefono(tel.getText());
         this.dispose();
