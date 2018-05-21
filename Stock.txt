@@ -1,9 +1,11 @@
 -hoa
 --mundo
----nodd,hmn33,mundo,hoa,4,
----dos,hmd33,mundo,hoa,36,
+---mundo1,submundo,hoa,300,4,
+---mundo2,submundo,hoa,400,36,
 -relojes
 --hombre
----tommy,rhht01,hombre,relojes,4,
 --mujer
----lacoste,rmla01,mujer,relojes,5,
+---rmla01,mujer,relojes,lacoste,5,
+-bolso
+--mano
+---dasd,mano,bolso,222233,23,

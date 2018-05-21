@@ -1,3 +1,8 @@
+
+import Ventanas.VerProveedor;
+import Ventanas.add_proveedor;
+import listas.ListaSimple;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +15,7 @@
  */
 public class Proveedor extends javax.swing.JPanel {
     Menú_principal Menú;
+    ListaSimple proveedores = new ListaSimple();
     /**
      * Creates new form Proveedor
      */
@@ -147,7 +153,9 @@ public class Proveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_añadirMouseMoved
 
     private void ver_proveedor(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ver_proveedor
-        // TODO add your handling code here:
+        add_proveedor prov = new add_proveedor(Menú, true);
+        prov.setVisible(true);
+        proveedores.agregaralfinal(prov);
     }//GEN-LAST:event_ver_proveedor
 
     private void añadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirMouseExited
@@ -159,11 +167,12 @@ public class Proveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8Salir
 
     private void verMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseMoved
-        // TODO add your handling code here:
+        ver.setBackground(new java.awt.Color(204, 204, 255));
     }//GEN-LAST:event_verMouseMoved
 
     private void Ver_proveedores(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_proveedores
-        ver.setBackground(new java.awt.Color(204, 204, 255));
+        VerProveedor vprov = new VerProveedor(Menú, true, proveedores);
+        vprov.setVisible(true);
     }//GEN-LAST:event_Ver_proveedores
 
     private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited

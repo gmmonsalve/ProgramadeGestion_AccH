@@ -10,7 +10,7 @@ package Ventanas;
  * @author LUIS POTTE
  */
 public class add_proveedor extends javax.swing.JDialog {
-    private String nom, Telefono, Correo;
+    private String nom, Telefono, Correo = "";
     /**
      * Creates new form add_proveedor
      */
@@ -105,6 +105,11 @@ public class add_proveedor extends javax.swing.JDialog {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 400, 30));
 
         tel.setBorder(null);
+        tel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telActionPerformed(evt);
+            }
+        });
         jPanel1.add(tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 210, 20));
 
         no.setBorder(null);
@@ -188,7 +193,7 @@ public class add_proveedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setNom(tel.getText());
+        this.setNom(no.getText());
         this.setCorreo(correo.getText());
         this.setTelefono(tel.getText());
         this.dispose();
@@ -202,6 +207,10 @@ public class add_proveedor extends javax.swing.JDialog {
         jLabel4.setEnabled(true);
         correo.setEnabled(true);
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telActionPerformed
 
     /**
      * @param args the command line arguments
