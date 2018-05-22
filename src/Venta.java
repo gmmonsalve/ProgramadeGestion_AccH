@@ -172,7 +172,11 @@ public class Venta extends javax.swing.JPanel {
         venta.add_comboclientes(combocls);
         venta.add_comboprodctos(comboProd);
         venta.setVisible(true);
-        ventas.agregaralfinal(venta);
+        if (venta.getAceptada() == true){
+            ventas.agregaralfinal(venta);
+            
+        }
+        
     }//GEN-LAST:event_Realizar_Nueva_Venta
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited

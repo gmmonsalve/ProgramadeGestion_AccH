@@ -5,7 +5,7 @@
 -relojes
 --hombre
 --mujer
----rmla01,mujer,relojes,lacoste,5,
+---rmla01,mujer,relojes,3000,5,
 -bolso
 --mano
 ---dasd,mano,bolso,222233,23,

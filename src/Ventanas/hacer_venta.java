@@ -20,10 +20,11 @@ public class hacer_venta extends javax.swing.JDialog {
 
     ListaSimple productos = new ListaSimple();
     int noVenta;
-    String valor_venta, nomcliente;
+    String nomcliente;
     boolean aceptada;
     Multilista Stock;
     int precioU, precioT, TotalVenta;
+    String catprod, subcatprod;
 
     /**
      * Creates new form hacer_venta
@@ -59,14 +60,6 @@ public class hacer_venta extends javax.swing.JDialog {
         this.noVenta = noVenta;
     }
 
-    public String getValor_venta() {
-        return valor_venta;
-    }
-
-    public void setValor_venta(String valor_venta) {
-        this.valor_venta = valor_venta;
-    }
-
     public String getNomcliente() {
         return nomcliente;
     }
@@ -75,7 +68,7 @@ public class hacer_venta extends javax.swing.JDialog {
         this.nomcliente = nomcliente;
     }
 
-    public boolean isAceptada() {
+    public boolean getAceptada() {
         return aceptada;
     }
 
@@ -107,20 +100,42 @@ public class hacer_venta extends javax.swing.JDialog {
         this.TotalVenta = TotalVenta;
     }
 
+    public String getCatprod() {
+        return catprod;
+    }
+
+    public void setCatprod(String catprod) {
+        this.catprod = catprod;
+    }
+
+    public String getSubcatprod() {
+        return subcatprod;
+    }
+
+    public void setSubcatprod(String subcatprod) {
+        this.subcatprod = subcatprod;
+    }
+    
+    
+
     public void buscarprecios() {
         NodoPrincipal cats = Stock.getInicioMulti();
         while (cats != null) {
+            String cat = cats.getInfo().toString();
             NodoSegundario subnodo = cats.getNodos().getInicio();
             while (subnodo != null) {
                 NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+                String subcat = u.getInfo().toString();
                 u = u.getSiguiente();
                 while (u != null) {
                     Producto infoProducto = (Producto) u.getInfo();
-                    if (infoProducto.getReferencia().endsWith(combo_prod.getSelectedItem().toString())){
+                    if (infoProducto.getReferencia().endsWith(combo_prod.getSelectedItem().toString())) {
+                        this.setCatprod(cat);
+                        this.setSubcatprod(subcat);
                         this.setPrecioU(Integer.parseInt(infoProducto.getPrecio()));
-                        System.out.println("jdj: "+cant.getValue());
+                        System.out.println("jdj: " + cant.getValue());
                         int canti = (int) cant.getValue();
-                        this.setPrecioT(this.getPrecioU()*canti);
+                        this.setPrecioT(this.getPrecioU() * canti);
                         TotalVenta = TotalVenta + precioT;
                     }
                     u = u.getSiguiente();
@@ -131,7 +146,7 @@ public class hacer_venta extends javax.swing.JDialog {
         }
     }
 
-public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
+    public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
         for (int i = 0; i < jcbx.getItemCount(); i++) {
             boolean sw = true;
             for (int j = 0; j < combo_cls.getItemCount(); j++) {
@@ -334,28 +349,31 @@ public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
 
     private void jButton9aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9aceptar
         this.setAceptada(true);
-        this.setProductos(productos);
         this.setNomcliente(combo_cls.getSelectedItem().toString());
-        this.setValor_venta("cero");
         this.dispose();
     }//GEN-LAST:event_jButton9aceptar
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // añadir prouctos a la tabla
-        productos.agregaralfinal(combo_prod.getSelectedItem().toString());
         this.buscarprecios();
-        DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
-        Tabla.addRow(new Object[]{cant.getValue(),combo_prod.getSelectedItem(),this.getPrecioU(),this.getPrecioT()});
-        total.setText(String.valueOf(this.TotalVenta));
-        combo_prod.removeItem(combo_prod.getSelectedItem()); // controla que el producto sea elegido una sola vez
+        NodoSegundario producto = Stock.getSubnodo(this.getCatprod(), this.getSubcatprod(), combo_prod.getSelectedItem().toString());
+        Producto prod = (Producto) producto.getInfo();
+        if ((int) cant.getValue() < prod.getCantidad() && (int) cant.getValue() > 0) {
+            productos.agregaralfinal(producto);
+            DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
+            Tabla.addRow(new Object[]{cant.getValue(), combo_prod.getSelectedItem(), this.getPrecioU(), this.getPrecioT()});
+            total.setText(String.valueOf(this.TotalVenta));
+            combo_prod.removeItem(combo_prod.getSelectedItem()); // controla que el producto sea elegido una sola vez
+        }else{
+            JOptionPane.showMessageDialog(null, "La catidad solicitada supera la cantidad en existencia en stock del producto, intente de nuevo");
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void combo_clsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_clsItemStateChanged
         combo_cls.setEnabled(false);
     }//GEN-LAST:event_combo_clsItemStateChanged
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -370,28 +388,24 @@ public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(hacer_venta.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(hacer_venta.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(hacer_venta.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(hacer_venta.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -401,7 +415,7 @@ public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
                 hacer_venta dialog = new hacer_venta(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
-        public void windowClosing(java.awt.event.WindowEvent e) {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
