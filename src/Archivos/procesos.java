@@ -5,7 +5,7 @@
  */
 package Archivos;
 
-import Ventanas.Producto;
+import Ventanas.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -80,8 +80,8 @@ public class procesos {
     }
 
     public void actualiza_archivo_Stock(String Nombre_archivo, Multilista list) throws IOException {
-        File viejo = new File(Nombre_archivo+".txt");
-        File nuevo = new File(viejo.getAbsolutePath()+".txt");
+        File viejo = new File(Nombre_archivo + ".txt");
+        File nuevo = new File(viejo.getAbsolutePath() + ".txt");
         FileWriter w = new FileWriter(nuevo, true);
         BufferedWriter x = new BufferedWriter(w);
         PrintWriter y = new PrintWriter(x);
@@ -148,42 +148,123 @@ public class procesos {
                 + "," + info.getCategoria()
                 + "," + info.getPrecio()
                 + "," + info.getCantidad()
-                +",";
+                + ",";
         return s;
     }
-    
-    public Multilista cargar_listas() throws FileNotFoundException, IOException {
-        Multilista mt = new Multilista();
-        String archivo = null;
-        File v = new File(archivo);
+
+    public ListaSimple cargar_clientelist(String archivo) throws FileNotFoundException, IOException {
+        ListaSimple lis = new ListaSimple();
+        File v = new File(archivo + ".txt");
         FileReader fr = new FileReader(v);
         BufferedReader br = new BufferedReader(fr);
         String line, nm = "";
         while (br.ready()) {
             line = br.readLine();
             boolean bo = true;
-            int j = 0;
-            while (bo == true) {
-                if (line.substring(j, j + 1).equals("-")) {
+            int cont = 1;
+            nm = "";
+            Add_cliente add = new Add_cliente();
+            for (int j = 0; j < line.length(); j++) {
+                if (!line.substring(j, j + 1).equals(";")) {
                     nm = nm + line.substring(j, j + 1);
                 } else {
-                    bo = false;
+                    switch (cont) {
+                        case 1:
+                            add.setNom(nm);
+                            System.out.println(" :"+ nm);
+                            break;
+                        case 2:
+                            System.out.println(" :"+ nm);
+                            add.setTelefono(nm);
+                            break;
+                        case 3:
+                            System.out.println(" :"+ nm);
+                            add.setCorreo(nm);
+                            break;
+                    }
+                    nm = "";
+                    cont++;
                 }
             }
-            switch (nm) {
-                case "-":
-                    mt.add_nodoprincipal(nm);
-                    break;
-                case "--":
-                    mt.add_sublista(j, bo);
-                    break;
-                case "---":
-                    mt.add_elmento_sublist(j, j, j);
-                    break;
-            }
+            lis.agregaralfinal(add);
         }
+
         br.close();
         fr.close();
-        return mt;
+        return lis;
+    }
+
+    public ListaSimple cargar_proveedorlist(String archivo) throws FileNotFoundException, IOException {
+        ListaSimple lis = new ListaSimple();
+        File v = new File(archivo + ".txt");
+        FileReader fr = new FileReader(v);
+        BufferedReader br = new BufferedReader(fr);
+        String line, nm = "";
+        while (br.ready()) {
+            line = br.readLine();
+            boolean bo = true;
+            int cont = 1;
+            add_proveedor add = new add_proveedor();
+            for (int j = 0; j < line.length(); j++) {
+                if (!line.substring(j, j + 1).equals(";")) {
+                    nm = nm + line.substring(j, j + 1);
+                } else {
+                    switch (cont) {
+                        case 1:
+                            add.setNom(nm);
+                            break;
+                        case 2:
+                            add.setTelefono(nm);
+                            break;
+                        case 3:
+                            add.setCorreo(nm);
+                            break;
+                    }
+                    nm = "";
+                    cont++;
+                }
+            }
+            lis.agregaralfinal(add);
+        }
+
+        br.close();
+        fr.close();
+        return lis;
+    }
+    
+    
+    public ListaSimple cargar_encargoslist(String archivo) throws FileNotFoundException, IOException {
+        ListaSimple lis = new ListaSimple();
+        File v = new File(archivo + ".txt");
+        FileReader fr = new FileReader(v);
+        BufferedReader br = new BufferedReader(fr);
+        String line, nm = "";
+        while (br.ready()) {
+            line = br.readLine();
+            boolean bo = true;
+            int cont = 1;
+            realizar_encargo add = new realizar_encargo();
+            for (int j = 0; j < line.length(); j++) {
+                if (!line.substring(j, j + 1).equals(";")) {
+                    nm = nm + line.substring(j, j + 1);
+                } else {
+                    switch (cont) {
+                        case 1:
+                            add.setCliente(nm);
+                            break;
+                        case 2:
+                            add.setProductos(nm);
+                            break;
+                    }
+                    nm = "";
+                    cont++;
+                }
+            }
+            lis.agregaralfinal(add);
+        }
+
+        br.close();
+        fr.close();
+        return lis;
     }
 }

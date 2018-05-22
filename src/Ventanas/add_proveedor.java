@@ -29,6 +29,9 @@ public class add_proveedor extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
     }
 
+    public add_proveedor() {
+    }
+
     public String getNom() {
         return nom;
     }
@@ -204,21 +207,21 @@ public class add_proveedor extends javax.swing.JDialog {
         if (!no.getText().isEmpty() & !tel.getText().isEmpty()) {
             this.setNom(no.getText());
             this.setTelefono(tel.getText());
-            if(!correo.getText().isEmpty()){
-            this.setCorreo(correo.getText());
-            }else{
-            this.setCorreo("not");
+            if (!correo.getText().isEmpty()) {
+                this.setCorreo(correo.getText());
+            } else {
+                this.setCorreo("not");
             }
-            String reg = nom+";"+Telefono+";"+Correo;
+            String reg = nom + ";" + Telefono + ";" + Correo + ";";
             try {
-                p.add_registro("proveedores", reg );
+                p.add_registro("proveedores", reg);
             } catch (IOException ex) {
                 System.out.println("Error al cargar el archivo.");
             }
             JOptionPane.showMessageDialog(null, "Se ha añadido el proveedor satisfactoriamente.");
 
-        }else{
-         JOptionPane.showMessageDialog(null, "Por favor, llene los campos correspondientes","Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, llene los campos correspondientes", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

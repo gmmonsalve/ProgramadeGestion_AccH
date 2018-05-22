@@ -30,6 +30,14 @@ public class Proveedor extends javax.swing.JPanel {
         ver.setBackground(new java.awt.Color(153, 153, 255));
     }
 
+    public ListaSimple getProveedores() {
+        return proveedores;
+    }
+
+    public void setProveedores(ListaSimple proveedores) {
+        this.proveedores = proveedores;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

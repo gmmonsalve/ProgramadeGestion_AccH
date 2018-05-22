@@ -34,11 +34,16 @@ public class Menú_principal extends javax.swing.JFrame {
 
     static String Password;
 
-    public Menú_principal() throws IOException {
+    public Menú_principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public void cargar_listas() throws IOException{
         stock.setStocklist(archivos.cargar_stocklist("Stock"));
-
+        cls.setClientes(archivos.cargar_clientelist("clientes"));
+        prov.setProveedores(archivos.cargar_proveedorlist("proveedores"));
+        en.setEncargos(archivos.cargar_encargoslist("Encargos"));
     }
 
     public String getContrasena() throws FileNotFoundException, IOException {
@@ -571,6 +576,7 @@ public class Menú_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_clientesbotonMouseMoved
 
     private void encargosbotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_encargosbotMouseClicked
+        en.setlistas(stock.getStocklist(), cls.getClientes());
         abrir_panel(en, "Encargos");        // TODO add your handling code here:
     }//GEN-LAST:event_encargosbotMouseClicked
 
@@ -687,11 +693,7 @@ public class Menú_principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Menú_principal().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Menú_principal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Menú_principal().setVisible(true);
             }
         });
     }

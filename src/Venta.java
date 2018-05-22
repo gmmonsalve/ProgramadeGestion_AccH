@@ -1,6 +1,7 @@
 
 import Ventanas.Add_cliente;
 import Ventanas.Producto;
+import Ventanas.VerVentas;
 import Ventanas.hacer_venta;
 import listas.*;
 
@@ -173,8 +174,8 @@ public class Venta extends javax.swing.JPanel {
         venta.add_comboprodctos(comboProd);
         venta.setVisible(true);
         if (venta.getAceptada() == true){
-            ventas.agregaralfinal(venta);
-            
+            ventas.agregar_alprincipio(venta);
+            stock.setStocklist(venta.getStock());
         }
         
     }//GEN-LAST:event_Realizar_Nueva_Venta
@@ -188,7 +189,8 @@ public class Venta extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel5MouseMoved
 
     private void Ver_Ventas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_Ventas
-
+        VerVentas ver = new VerVentas(Menú, true, ventas);
+        ver.setVisible(true);
     }//GEN-LAST:event_Ver_Ventas
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited

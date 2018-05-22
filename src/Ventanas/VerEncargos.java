@@ -7,30 +7,26 @@ package Ventanas;
 
 import javax.swing.table.DefaultTableModel;
 import listas.ListaSimple;
-import listas.NodoPrincipal;
 import listas.NodoSegundario;
 
 /**
  *
  * @author LUIS POTTE
  */
-public class VerVentas extends javax.swing.JDialog {
-
-    ListaSimple ventas;
-
+public class VerEncargos extends javax.swing.JDialog {
+    ListaSimple encargos;
     /**
-     * Creates new form VerVentas
+     * Creates new form VerEncargos
      */
-    public VerVentas(java.awt.Frame parent, boolean modal) {
+    public VerEncargos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-
-    public VerVentas(java.awt.Frame parent, boolean modal, ListaSimple lis) {
+    
+    public VerEncargos(java.awt.Frame parent, boolean modal, ListaSimple op){
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(parent);
-        this.ventas = lis;
+        this.encargos = op;
         this.modelo();
     }
 
@@ -43,16 +39,25 @@ public class VerVentas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaInfo = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Encargos");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 70, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,20 +67,12 @@ public class VerVentas extends javax.swing.JDialog {
 
             },
             new String [] {
-                "No. de venta", "Nombre del cliente", "total_venta"
+                "Productos", "Teléfono"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(TablaInfo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 533, 308));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 560, 308));
 
         jButton3.setText("Aceptar");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -84,47 +81,9 @@ public class VerVentas extends javax.swing.JDialog {
                 jButton3cancelar(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 90, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 80, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 50, 700, 410));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 176, -1, -1));
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("VENTAS REGISTRADAS");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(289, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(272, 272, 272))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 50, 700, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,17 +92,15 @@ public class VerVentas extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton3cancelar
 
-    private void mostar_datos(DefaultTableModel tabla, int n, int m) {
+        private void mostar_datos(DefaultTableModel tabla, int n, int m) {
         DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
         int row = 0, column = 0;
-        NodoSegundario subnodo = ventas.getInicio();
+        NodoSegundario subnodo = encargos.getInicio();
         while (subnodo != null) {
-            hacer_venta info = (hacer_venta) subnodo.getInfo();
-            tabla.setValueAt(info.getNoVenta(), row, column);
+            realizar_encargo info = (realizar_encargo) subnodo.getInfo();
+            tabla.setValueAt(info.getCliente(), row, column);
             column++;
-            tabla.setValueAt(info.getNomcliente(), row, column);
-            column++;
-            tabla.setValueAt(info.getTotalVenta(), row, column);
+            tabla.setValueAt(info.getProductos(), row, column);
             column++;
             row++;
             column = 0;
@@ -154,8 +111,8 @@ public class VerVentas extends javax.swing.JDialog {
 
     private void modelo() {
         DefaultTableModel ModeloTabla = (DefaultTableModel) TablaInfo.getModel();
-        int contR = 0, contC = 3;
-        NodoSegundario subnodo = ventas.getInicio();
+        int contR = 0, contC = 2;
+        NodoSegundario subnodo = encargos.getInicio();
         while (subnodo != null) {
             contR++;
             subnodo = subnodo.getSiguiente();
@@ -164,7 +121,7 @@ public class VerVentas extends javax.swing.JDialog {
         ModeloTabla.setColumnCount(contC);
         mostar_datos(ModeloTabla, contR, contC);
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -182,20 +139,20 @@ public class VerVentas extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEncargos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEncargos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEncargos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEncargos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VerVentas dialog = new VerVentas(new javax.swing.JFrame(), true);
+                VerEncargos dialog = new VerEncargos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -210,9 +167,8 @@ public class VerVentas extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaInfo;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

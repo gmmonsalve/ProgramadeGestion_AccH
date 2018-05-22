@@ -15,6 +15,18 @@ public class ListaSimple extends Lista{
         super();
     }
 
+     public void agregar_alprincipio(Object n){
+          NodoSegundario nvo = new NodoSegundario(n);
+        if (inicio == null) {
+            inicio = nvo;
+        } else {
+          NodoSegundario aux = inicio;
+          nvo.setSiguiente(aux);
+          inicio = nvo;
+        }
+        tamaño++;
+    }
+    
     public void agregaralfinal(Object n) {
         NodoSegundario nvo = new NodoSegundario(n);
         if (inicio == null) {

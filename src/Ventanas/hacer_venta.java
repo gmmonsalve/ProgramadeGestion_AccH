@@ -44,9 +44,22 @@ public class hacer_venta extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
     }
 
+    public hacer_venta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public ListaSimple getProductos() {
         return productos;
     }
+
+    public Multilista getStock() {
+        return Stock;
+    }
+
+    public void setStock(Multilista Stock) {
+        this.Stock = Stock;
+    }
+    
 
     public void setProductos(ListaSimple productos) {
         this.productos = productos;
@@ -133,7 +146,6 @@ public class hacer_venta extends javax.swing.JDialog {
                         this.setCatprod(cat);
                         this.setSubcatprod(subcat);
                         this.setPrecioU(Integer.parseInt(infoProducto.getPrecio()));
-                        System.out.println("jdj: " + cant.getValue());
                         int canti = (int) cant.getValue();
                         this.setPrecioT(this.getPrecioU() * canti);
                         TotalVenta = TotalVenta + precioT;
@@ -171,6 +183,23 @@ public class hacer_venta extends javax.swing.JDialog {
             if (sw == true) {
                 this.combo_prod.addItem(jcbx.getItemAt(i));
             }
+        }
+    }
+    
+    public void actualizar_stocklist(){
+        NodoSegundario aux = productos.getInicio();
+        while(aux != null){
+            Producto info = (Producto) aux.getInfo();
+            int res = info.getCantidad() - (int) cant.getValue();
+            if (res==0){
+                // eliminar
+                NodoSegundario p = Stock.getSubnodo(info.getCategoria(), info.getSubcategoria(), info.getReferencia());
+                Stock.eliminar_subnodo(info.getCategoria(), info.getSubcategoria(), p);
+            }else{
+                //cambiar canidad
+                info.setCantidad(res);
+            }
+            aux = aux.getSiguiente();
         }
     }
 
@@ -350,6 +379,7 @@ public class hacer_venta extends javax.swing.JDialog {
     private void jButton9aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9aceptar
         this.setAceptada(true);
         this.setNomcliente(combo_cls.getSelectedItem().toString());
+        this.actualizar_stocklist();
         this.dispose();
     }//GEN-LAST:event_jButton9aceptar
 
@@ -359,7 +389,7 @@ public class hacer_venta extends javax.swing.JDialog {
         NodoSegundario producto = Stock.getSubnodo(this.getCatprod(), this.getSubcatprod(), combo_prod.getSelectedItem().toString());
         Producto prod = (Producto) producto.getInfo();
         if ((int) cant.getValue() < prod.getCantidad() && (int) cant.getValue() > 0) {
-            productos.agregaralfinal(producto);
+            productos.agregaralfinal(prod);
             DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
             Tabla.addRow(new Object[]{cant.getValue(), combo_prod.getSelectedItem(), this.getPrecioU(), this.getPrecioT()});
             total.setText(String.valueOf(this.TotalVenta));

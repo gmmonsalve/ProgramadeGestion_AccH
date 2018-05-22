@@ -175,15 +175,14 @@ public class Login extends javax.swing.JFrame {
     private void botonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInicioMouseClicked
         err.setText("");
         if (contrasena.getText().equals(contrasen)) {
+            Menú_principal mn = new Menú_principal();
+            mn.setVisible(true);
             try {
-                Menú_principal mn = new Menú_principal();
-                mn.setVisible(true);
-                this.dispose();
-                
+                mn.cargar_listas();
             } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "ha ocurrido un error inesperado, por favor contactar ayuda");
             }
-
+            this.dispose();
         } else {
             if (contrasena.getText().equals("")) {
                 err.setText("*Por favor digite la contraseña");

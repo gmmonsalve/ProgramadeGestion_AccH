@@ -1,14 +1,18 @@
-Gabriela Monsalve;3023382650;monsalve@gmail.com
-Jennifer López;432146573;lopez@gmail.com
-luis;3002641525;lpotte@uninorte.edu.co
-luis;3002641525;lpotte@uninorte.edu.co
-luis;23393939;luiss
-lpotte;l3000303;lpotte
-lshary;30081431886;shalopo@gamil.com
-luis;lposs;lpotte@uninorte.edu.co
-luis;3222222;lpote@uninorte.educ.co
-kkd;jhhh;jjjejejej
-popo;oooo;correo
-llpo;ertyy;klklklk
-lpoi;333445;lpotte
-luis;30303;lpotte@uninorte.edu.co
+Gabriela Monsalve;3023382650;monsalve@gmail.com;
+Jennifer López;432146573;lopez@gmail.com;
+luis;3002641525;lpotte@uninorte.edu.co;
+luis;3002641525;lpotte@uninorte.edu.co;
+luis;23393939;luiss;
+lpotte;l3000303;lpotte;
+lshary;30081431886;shalopo@gamil.com;
+luis;lposs;lpotte@uninorte.edu.co;
+luis;3222222;lpote@uninorte.educ.co;
+kkd;jhhh;jjjejejej;
+popo;oooo;correo;
+llpo;ertyy;klklklk;
+lpoi;333445;lpotte;
+luis;30303;lpotte@uninorte.edu.co;
+patu;300303030;dalvisdydyd@gmail.com;
+luis;3003030303;lpotte@uninorte.edu.co;
+lpotte;kdkdk;lpotte;
+luis;ótte;89898;

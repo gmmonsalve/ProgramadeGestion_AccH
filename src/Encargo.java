@@ -1,15 +1,29 @@
+
+import Ventanas.Add_cliente;
+import Ventanas.Producto;
+import Ventanas.VerEncargos;
+import Ventanas.realizar_encargo;
+import listas.ListaSimple;
+import listas.Multilista;
+import listas.NodoPrincipal;
+import listas.NodoSegundario;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author LUIS POTTE
  */
 public class Encargo extends javax.swing.JPanel {
+
     private Menú_principal Menú;
+    ListaSimple encargos = new ListaSimple();
+    Multilista stock;
+    ListaSimple clientes;
+
     /**
      * Creates new form Encargo
      */
@@ -24,6 +38,47 @@ public class Encargo extends javax.swing.JPanel {
         ver.setBackground(new java.awt.Color(153, 153, 255));
     }
 
+    public ListaSimple getEncargos() {
+        return encargos;
+    }
+
+    public void setEncargos(ListaSimple encargos) {
+        this.encargos = encargos;
+    }
+    
+    
+    public void setlistas(Multilista mt, ListaSimple cl){
+        this.stock = mt;
+        this.clientes = cl;
+    }
+
+    public void cargar_jcombobox_stock() {
+        NodoPrincipal p = stock.getInicioMulti();
+        while (p != null) {
+            NodoSegundario q = p.getNodos().getInicio();
+            while (q != null) {
+                NodoSegundario u = (NodoSegundario) q.getInfo();
+                u = u.getSiguiente();
+                while (u != null) {
+                    Producto info = (Producto) u.getInfo();
+                    combo_prod.addItem(info.getReferencia());
+                    u = u.getSiguiente();
+                }
+                q = q.getSiguiente();
+            }
+            p = p.getSiguiente();
+        }
+    }
+
+    public void cargar_combobox_cls() {
+        NodoSegundario p = clientes.getInicio();
+        while (p != null) {
+            Add_cliente info = (Add_cliente) p.getInfo();
+            combocls.addItem(info.getNom());
+            p = p.getSiguiente();
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +88,8 @@ public class Encargo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        combo_prod = new javax.swing.JComboBox<>();
+        combocls = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         añadir = new javax.swing.JPanel();
@@ -151,7 +208,13 @@ public class Encargo extends javax.swing.JPanel {
     }//GEN-LAST:event_añadirMouseMoved
 
     private void Realizar_encargo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_encargo
-
+        realizar_encargo re = new realizar_encargo(Menú, true);
+        this.cargar_combobox_cls();
+        this.cargar_jcombobox_stock();
+        re.add_comboclientes(combocls);
+        re.add_comboprodctos(combo_prod);
+        re.setVisible(true);
+        encargos.agregar_alprincipio(re);
     }//GEN-LAST:event_Realizar_encargo
 
     private void añadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirMouseExited
@@ -163,7 +226,8 @@ public class Encargo extends javax.swing.JPanel {
     }//GEN-LAST:event_verMouseMoved
 
     private void Ver_encargos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ver_encargos
-        // TODO add your handling code here:
+        VerEncargos ver = new VerEncargos(Menú, true, encargos);
+        ver.setVisible(true);
     }//GEN-LAST:event_Ver_encargos
 
     private void verMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMouseExited
@@ -173,6 +237,8 @@ public class Encargo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel añadir;
+    private javax.swing.JComboBox<String> combo_prod;
+    private javax.swing.JComboBox<String> combocls;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
