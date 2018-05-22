@@ -5,6 +5,12 @@
  */
 package Ventanas;
 
+import Archivos.procesos;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LUIS POTTE
@@ -12,6 +18,8 @@ package Ventanas;
 public class Add_cliente extends javax.swing.JDialog {
     
     private String nom, Correo, Telefono;
+    procesos p = new procesos();
+    
     /**
      * Creates new form Add_cliente
      */
@@ -184,6 +192,24 @@ public class Add_cliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(!tel.getText().isEmpty() & !tel.getText().isEmpty() ){
+        this.setNom(no.getText());
+        this.setTelefono(tel.getText());
+        if(correo.getText()!=null){
+        this.setCorreo(correo.getText());
+        }else{
+        this.setCorreo("not");
+        }
+        JOptionPane.showMessageDialog(null,"Se ha añadido exitosamente al cliente");
+        }else{
+         JOptionPane.showMessageDialog(null,"Por favor, digite los campos correspondientes", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        String reg = nom+";"+Telefono+";"+Correo;
+        try {
+            p.add_registro("clientes", reg);
+        } catch (IOException ex) {
+            Logger.getLogger(Add_cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setNom(no.getText());
         this.setCorreo(correo.getText());
         this.setTelefono(tel.getText());
