@@ -166,7 +166,7 @@ public class Venta extends javax.swing.JPanel {
 
     private void Realizar_Nueva_Venta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Realizar_Nueva_Venta
         this.cant_ventas++;
-        hacer_venta venta = new hacer_venta(Menú, true, this.cant_ventas);
+        hacer_venta venta = new hacer_venta(Menú, true, this.cant_ventas, stock.getStocklist());
         this.cargar_combobox_cls();
         this.cargar_jcombobox_stock();
         venta.add_comboclientes(combocls);

@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import listas.ListaSimple;
 import listas.Multilista;
+import listas.NodoPrincipal;
+import listas.NodoSegundario;
 
 /**
  *
@@ -19,18 +21,22 @@ public class hacer_venta extends javax.swing.JDialog {
     ListaSimple productos = new ListaSimple();
     int noVenta;
     String valor_venta, nomcliente;
+    boolean aceptada;
+    Multilista Stock;
+    int precioU, precioT, TotalVenta;
 
     /**
      * Creates new form hacer_venta
      */
-    public hacer_venta(java.awt.Frame parent, boolean modal, int id) {
+    public hacer_venta(java.awt.Frame parent, boolean modal, int id, Multilista mt) {
         super(parent, modal);
         initComponents();
         this.noVenta = id;
         this.id.setText(String.valueOf(id));
         this.setLocationRelativeTo(parent);
+        this.Stock = mt;
     }
-    
+
     public hacer_venta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -69,7 +75,63 @@ public class hacer_venta extends javax.swing.JDialog {
         this.nomcliente = nomcliente;
     }
 
-    public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
+    public boolean isAceptada() {
+        return aceptada;
+    }
+
+    public void setAceptada(boolean aceptada) {
+        this.aceptada = aceptada;
+    }
+
+    public int getPrecioU() {
+        return precioU;
+    }
+
+    public void setPrecioU(int precioU) {
+        this.precioU = precioU;
+    }
+
+    public int getPrecioT() {
+        return precioT;
+    }
+
+    public void setPrecioT(int precioT) {
+        this.precioT = precioT;
+    }
+
+    public int getTotalVenta() {
+        return TotalVenta;
+    }
+
+    public void setTotalVenta(int TotalVenta) {
+        this.TotalVenta = TotalVenta;
+    }
+
+    public void buscarprecios() {
+        NodoPrincipal cats = Stock.getInicioMulti();
+        while (cats != null) {
+            NodoSegundario subnodo = cats.getNodos().getInicio();
+            while (subnodo != null) {
+                NodoSegundario u = (NodoSegundario) subnodo.getInfo();
+                u = u.getSiguiente();
+                while (u != null) {
+                    Producto infoProducto = (Producto) u.getInfo();
+                    if (infoProducto.getReferencia().endsWith(combo_prod.getSelectedItem().toString())){
+                        this.setPrecioU(Integer.parseInt(infoProducto.getPrecio()));
+                        System.out.println("jdj: "+cant.getValue());
+                        int canti = (int) cant.getValue();
+                        this.setPrecioT(this.getPrecioU()*canti);
+                        TotalVenta = TotalVenta + precioT;
+                    }
+                    u = u.getSiguiente();
+                }
+                subnodo = subnodo.getSiguiente();
+            }
+            cats = cats.getSiguiente();
+        }
+    }
+
+public void add_comboclientes(javax.swing.JComboBox<String> jcbx) {
         for (int i = 0; i < jcbx.getItemCount(); i++) {
             boolean sw = true;
             for (int j = 0; j < combo_cls.getItemCount(); j++) {
@@ -124,6 +186,9 @@ public class hacer_venta extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -191,6 +256,11 @@ public class hacer_venta extends javax.swing.JDialog {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         combo_cls.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecciona -" }));
+        combo_cls.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_clsItemStateChanged(evt);
+            }
+        });
         jPanel1.add(combo_cls, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 200, -1));
 
         jLabel6.setText("Númeor de venta: ");
@@ -208,7 +278,7 @@ public class hacer_venta extends javax.swing.JDialog {
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 255));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 200, 10));
 
         jButton3.setText("cancelar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +286,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton3cancelar(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, -1, 30));
 
         jButton9.setText("Aceptar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +294,21 @@ public class hacer_venta extends javax.swing.JDialog {
                 jButton9aceptar(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, 30));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, -1, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Total de la venta: ");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, -1, -1));
+
+        total.setEditable(false);
+        total.setBackground(new java.awt.Color(255, 255, 255));
+        total.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        total.setBorder(null);
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 200, 20));
+
+        jSeparator2.setBackground(new java.awt.Color(153, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,7 +318,7 @@ public class hacer_venta extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();
@@ -243,11 +327,13 @@ public class hacer_venta extends javax.swing.JDialog {
     private void jButton3cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3cancelar
         int op = JOptionPane.showConfirmDialog(null, "¿Seguro que desea cancelar el proceso?", "Alerta!", JOptionPane.YES_NO_OPTION);
         if (op == 0) {
+            this.setAceptada(false);
             this.dispose();
         }
     }//GEN-LAST:event_jButton3cancelar
 
     private void jButton9aceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9aceptar
+        this.setAceptada(true);
         this.setProductos(productos);
         this.setNomcliente(combo_cls.getSelectedItem().toString());
         this.setValor_venta("cero");
@@ -256,11 +342,20 @@ public class hacer_venta extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // añadir prouctos a la tabla
-//        productos.agregaralfinal(combo_prod.getSelectedItem().toString());
+        productos.agregaralfinal(combo_prod.getSelectedItem().toString());
+        this.buscarprecios();
         DefaultTableModel Tabla = (DefaultTableModel) TablaInfo.getModel();
-        Tabla.addRow(new Object[]{cant.getValue(),combo_prod.getSelectedItem(),0,0});
+        Tabla.addRow(new Object[]{cant.getValue(),combo_prod.getSelectedItem(),this.getPrecioU(),this.getPrecioT()});
+        total.setText(String.valueOf(this.TotalVenta));
+        combo_prod.removeItem(combo_prod.getSelectedItem()); // controla que el producto sea elegido una sola vez
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void combo_clsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_clsItemStateChanged
+        combo_cls.setEnabled(false);
+    }//GEN-LAST:event_combo_clsItemStateChanged
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -275,16 +370,28 @@ public class hacer_venta extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(hacer_venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(hacer_venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(hacer_venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(hacer_venta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(hacer_venta.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(hacer_venta.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(hacer_venta.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(hacer_venta.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -294,7 +401,7 @@ public class hacer_venta extends javax.swing.JDialog {
                 hacer_venta dialog = new hacer_venta(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
+        public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
@@ -318,9 +425,12 @@ public class hacer_venta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }
